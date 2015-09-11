@@ -81,6 +81,19 @@ $logger -> debug ("get :: " .json_encode($_GET));
 
 			case "home":
 				$homeController = new HomeController();
+				if($route[2] == "logout"){
+					$homeController -> logout ();
+				}
+				elseif($route[2] == 'signup') {
+					$homeController -> signup ();
+				}
+				elseif($route[2] == 'login') {
+					$homeController -> login ();
+				}
+				elseif($route[2] == 'forgetPassword') {
+					$homeController -> forgetPassword ();
+				}
+				
 				$where = $route[2];
 
 				switch ($where) {

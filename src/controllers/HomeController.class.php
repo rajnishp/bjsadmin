@@ -16,10 +16,15 @@ class HomeController extends BaseController {
 	function render (){
 		$baseUrl = $this->baseUrl;
 		// here its shower that user is not in session
-		 
-		try{
+		
 
-			require_once 'views/landing/index.php';
+		try{
+			if (isset($this-> username)){
+				require_once 'views/admin/admin.php';				
+			}
+			else {
+				require_once 'views/landing/index.php';
+			}
 
 		} catch (Exception $e) {
 
@@ -29,7 +34,18 @@ class HomeController extends BaseController {
 
 	}
 
+	function admin() {
+		try{
 
+			require_once 'views/admin/admin.php';
+
+		} catch (Exception $e) {
+
+			//require_once 'views/error/pages-404.php';	
+			$this->logger->error( "Error occur :500 ".json_encode($e) );
+		}		
+	}
+ 
 	function serviceRequest (){
 		if (isset($_POST['name'], $_POST['mobile'], $_POST['address'], $_POST['type'])) {
 
@@ -49,6 +65,36 @@ class HomeController extends BaseController {
 			}
 
 		}
+	}
+
+	function login (){
+		if(isset($_POST['username'],$_POST['password'])){
+
+			$this->user = $this-> employeeDAO ->getByUsernamePassword( $_POST['username'], $_POST['password']);
+			
+			if($this->user){
+				
+				$_SESSION['uuid'] = $this->user->getUuid();
+				$_SESSION['username'] = $this->user->getUsername() ;
+				$_SESSION['first_name'] = $this->user->getFirstName() ;
+				$_SESSION['last_name'] = $this->user->getLastName() ;
+				$_SESSION['email'] = $this->user->getEmail();
+				$_SESSION['last_login'] = $this->user->getLastLoginTime();
+
+			}
+			else{
+				header('HTTP/1.1 500 Internal Server Error');
+				echo "Username and Password donot match, Try Again";
+				die();
+			}
+
+		}
+		else {
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Username and Password field cannot be empty";
+			die();
+		}
+
 	}
 
 }

@@ -9,6 +9,7 @@ require_once 'dao/DAOFactory.class.php';
 abstract class BaseController {
 
 	protected $baseUrl;
+	protected $employeeDAO;
 	protected $serviceRequestDAO;
 
 
@@ -25,8 +26,19 @@ abstract class BaseController {
 		$this -> logger -> debug("BaseController started");
 		
 
+		if( isset( $_SESSION["uuid"] ) ){
+
+			$this -> userId = $_SESSION["user_id"];
+			$this -> username = $_SESSION["username"];
+			$this -> firstName = $_SESSION['first_name'];
+			$this -> lastName = $_SESSION['last_name'];
+
+		}
+
 		$DAOFactory = new DAOFactory();
+
 		
+		$this -> employeeDAO = $DAOFactory->getEmployeesDAO();
 		$this -> serviceRequestDAO = $DAOFactory->getWorkersDAO();
 		
 		$this->process();
