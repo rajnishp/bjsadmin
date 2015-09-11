@@ -10,7 +10,7 @@ session_set_cookie_params(728000);
 
 
 include_once "controllers/HomeController.class.php";
-
+include_once "controllers/WorkerController.class.php";
 
 require_once 'utils/Util.php';
 require_once 'utils/Timer.php';
@@ -104,6 +104,29 @@ $logger -> debug ("get :: " .json_encode($_GET));
 					
 					default:
 						$homeController -> render ();
+						break;
+				}
+
+				break;
+				
+
+			case "workers":
+				$workerController = new WorkerController();
+
+				$where = $route[2];
+
+				switch ($where) {
+
+					case 'addNew':
+						$workerController -> addNew();
+						break;
+					// addNew is page for addnewworker
+					case 'addNewWorker':
+						$workerController -> addNewWorker();
+						break;
+					//addNewWorker is post worker detail for new worker
+					default:
+						$workerController -> render ();
 						break;
 				}
 

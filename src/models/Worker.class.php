@@ -9,36 +9,49 @@
 		
 		private $firstName;
 		private $lastName;
-		private $addressProof;
-		private $idProof;
+		private $addressProofName;
+		private $addressProofId;
+		private $idProofName;
+		private $idProofId;
+
 		private $address;
 		private $mobile;
 		private $emergencyMobile;
 		private $education;
 		private $languages;
+		
 		private $skills;
 		private $experience;
 		private $workingDomain;
+		
 		private $currentWorkingArea;
 		private $preferredworkingArea;
+		
 		private $guessedSalary;
 		private $verificationStatus;
+		
 		private $workTimeSlots;
 		private $freeTimeSlots;
+		
 		private $birthDate;
 		private $gender;
 		private $addedOn;
 		private $lastUpdateOn;
 
-		function __construct ($firstName, $lastName, $addressProof, $idProof, $address, $mobile, $emergencyMobile, $education,
-							$languages, $skills, $experience, $workingDomain, $currentWorkingArea, $preferredworkingArea, $guessedSalary, $verificationStatus,
-							$workTimeSlots, $freeTimeSlots, $birthDate, $gender, $addedOn, $lastUpdateOn, $uid = null) {
+		function __construct ($firstName, $lastName, $addressProofName, $addressProofId, 
+							$idProofName, $idProofId, $address, $mobile, 
+							$emergencyMobile, $education, $languages, $skills, 
+							$experience, $workingDomain, $currentWorkingArea, $preferredworkingArea, 
+							$guessedSalary, $verificationStatus, $workTimeSlots, $freeTimeSlots, 
+							$birthDate, $gender, $addedOn, $lastUpdateOn, $uuid = null) {
 			
-			$this -> uid = $uid;
+			$this -> uuid = $uuid;
 			$this -> firstName = $firstName;
 			$this -> lastName = $lastName;
-			$this -> addressProof = $addressProof;
-			$this -> idProof = $idProof;
+			$this -> addressProofName = $addressProofName;
+			$this -> addressProofId = $addressProofId;
+			$this -> idProofName = $idProofName;
+			$this -> idProofId = $idProofId;
 			$this -> address = $address;
 			$this -> mobile = $mobile;
 			$this -> emergencyMobile = $emergencyMobile;
@@ -60,11 +73,11 @@
 
 		}
 
-		function setUid($uid){
-			$this -> uid = $uid;
+		function setUuid($uuid){
+			$this -> uuid = $uuid;
 		}
-		function getUid(){
-			return $this-> uid;
+		function getUuid(){
+			return $this-> uuid;
 		}
 
 		function setFirstName($firstName){
@@ -81,18 +94,32 @@
 			return $this-> lastName;
 		}
 
-		function setAddressProof($addressProof){
-			$this -> addressProof = $addressProof;
+		function setAddressProofName ($addressProofName){
+			$this -> addressProofName = $addressProofName;
 		}
-		function getAddressProof(){
-			return $this-> addressProof;
+		function getAddressProofName(){
+			return $this-> addressProofName;
 		}
 
-		function setIdProof($idProof){
-			$this -> idProof = $idProof;
+		function setAddressProofId($addressProofId){
+			$this -> addressProofId = $addressProofId;
 		}
-		function getIdProof(){
-			return $this-> idProof;
+		function getAddressProofId(){
+			return $this-> addressProofId;
+		}
+
+		function setIdProofName($idProofName){
+			$this -> idProofName = $idProofName;
+		}
+		function getIdProofName(){
+			return $this-> idProofName;
+		}
+
+		function setIdProofId($idProofId){
+			$this -> idProofId = $idProofId;
+		}
+		function getIdProofId(){
+			return $this-> idProofId;
 		}
 
 		function setAddress($address){
@@ -226,8 +253,10 @@
 			return array (
 							firstName => $this -> firstName,
 							lastName=> $this -> lastName,
-							addressProof => $this -> addressProof,
-							idProof => $this -> idProof,
+							addressProofName => $this -> addressProofName,
+							addressProofId => $this -> addressProofId,
+							idProofName => $this -> idProofName,
+							idProofId => $this -> idProofId,
 							address => $this -> address,
 							mobile => $this -> mobile,
 							emergencyMobile=> $this -> emergencyMobile,

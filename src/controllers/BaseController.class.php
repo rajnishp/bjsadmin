@@ -10,7 +10,7 @@ abstract class BaseController {
 
 	protected $baseUrl;
 	protected $employeeDAO;
-	protected $serviceRequestDAO;
+	protected $workerDAO;
 
 
 	function __construct (  ){
@@ -28,7 +28,7 @@ abstract class BaseController {
 
 		if( isset( $_SESSION["uuid"] ) ){
 
-			$this -> userId = $_SESSION["user_id"];
+			$this -> uuid = $_SESSION["uuid"];
 			$this -> username = $_SESSION["username"];
 			$this -> firstName = $_SESSION['first_name'];
 			$this -> lastName = $_SESSION['last_name'];
@@ -39,7 +39,7 @@ abstract class BaseController {
 
 		
 		$this -> employeeDAO = $DAOFactory->getEmployeesDAO();
-		$this -> serviceRequestDAO = $DAOFactory->getWorkersDAO();
+		$this -> workerDAO = $DAOFactory->getWorkersDAO();
 		
 		$this->process();
 

@@ -21,17 +21,17 @@
 
         }
 
-        public function insert($serviceRequestObj) {
+        public function insert($workerObj) {
             global $logger, $warnings_payload;
 
-            $logger -> debug("Insert the customer into `customers` collection");
+            $logger -> debug("Insert the worker details into `workers` collection");
 
-            $logger -> debug ("Selecting collection: customers");
-            $this -> mongo -> selectCollection('service_requests');
+            $logger -> debug ("Selecting collection: workers");
+            $this -> mongo -> selectCollection('workers');
 
 
-            $logger -> debug("Mongo Customer: " . json_encode($serviceRequestObj->toArray() ));
-            $result = $this -> mongo -> insert($serviceRequestObj->toArray()); 
+            $logger -> debug("Mongo Worker: " . json_encode($workerObj->toArray() ));
+            $result = $this -> mongo -> insert($workerObj->toArray()); 
             $logger -> debug("Result: " . $result ['ok']);
 
             return $result;

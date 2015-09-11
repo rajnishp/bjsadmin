@@ -644,7 +644,7 @@
 				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 				<!--End page title-->
 
-				  <div class="form-horizontal" id="worker_details_form">
+				<form class="form-horizontal" id="worker_details_form" onsubmit="return (validateWorkerDetails());">
 
 				    <div class="form-group">
 
@@ -728,6 +728,25 @@
 						<label class="col-md-3 control-label">Address</label>
 						<div class="col-md-7">
 							<textarea type="text" id="address" class="form-control" placeholder="Full Address"></textarea>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Gender</label>
+						<div class="col-lg-7">
+							<div class="radio">
+								<label class="form-radio form-icon">
+									<input type="radio" name="gender" value="Male"> Male
+								</label>
+
+								<label class="form-radio form-icon">
+									<input type="radio" name="gender" value="Female"> Female
+								</label>
+
+								<label class="form-radio form-icon">
+									<input type="radio" name="gender" value="Other"> Other
+								</label>
+							</div>
 						</div>
 					</div>
 
@@ -826,7 +845,7 @@
 				    <div class="form-group">
 					    <label class="col-md-3 control-label"></label>
 					    <div class="col-md-7">
-					        <button type="submit" class="btn btn-success" onclick="return (validateWorkerDetails());">Submit Details</button>
+					        <button type="submit" class="btn btn-success">Submit Details</button>
 					    </div>
 				    </div> <!-- /.form-group -->
 
@@ -1917,17 +1936,19 @@
 					"&current_working_city=" + $('#'+fields[10]).val() + "&current_working_area=" +  $('#'+fields[11]).val() + 
 					"&preferred_working_city=" + $('#'+fields[12]).val() + "&preferred_working_area=" + $('#'+fields[13]).val()+ 
 					"&birth_date=" +  $('#'+fields[14]).val() + "&address=" + $('#'+fields[15]).val() +
-					"&working_slot1_from=" + $('#'+fields[16]).val() +
-					"&free_slot1_from=" + $('#'+fields[17]).val() +
+					"&gender=" + $("input[name='gender']:checked").val() +
+					"&working_slots=" + $('#'+fields[17]).val() +
+					"&free_slots=" + $('#'+fields[18]).val() +
 					"&languages=" + languagesArray + 
 					"&skills=" + skillsArray +
 					"&emergancy_mobile=" + $('#emergancy_mobile').val() ;
 			
 			console.log(dataString);
+			alert(dataString);
 
 	        $.ajax({
 				type: "POST",
-			    url: "<?= $this-> baseUrl ?>project/createProject",
+			    url: "<?= $this->baseUrl ?>workers/addNewWorker",
 			    data: dataString,
 			    cache: false,
 			    success: function(result){
@@ -1944,7 +1965,7 @@
 	         			"id_proof_name", "id_proof_id", "mobile", 
 	         			"education", "experience", "working_domain", 
 	         			"current_working_city", "current_working_area", "preferred_working_city", 
-	         			"preferred_working_area", "birth_date", , "address", 
+	         			"preferred_working_area", "birth_date", "address", 
 	         			"working_slot1_from", "working_slot1_to", "free_slot1_from", 
 	         			"free_slot1_to" ];
 	         //emergancy_mobile not compulsary
@@ -1966,12 +1987,12 @@
 	          var stripped = phoneVal.replace(/[\(\)\.\-\ ]/g, '');    
 	          if (isNaN(parseInt(stripped))) {
 	            //error("Contact No", "The mobile number contains illegal characters");
-	            $('#phone').css("border", "1px solid OrangeRed");
+	            $('#mobile').css("border", "1px solid OrangeRed");
 	            return false;
 	          }
 	          else if (phoneVal.length != 10) {
 	            //error("Contact No", "Make sure you included valid contact number");
-	            $('#phone').css("border", "1px solid OrangeRed");
+	            $('#mobile').css("border", "1px solid OrangeRed");
 	            return false;
 	          }
 	          
