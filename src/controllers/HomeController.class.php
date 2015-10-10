@@ -97,6 +97,23 @@ class HomeController extends BaseController {
 
 	}
 
+	function logout(){
+	    
+	    session_unset($_SESSION['uuid']);
+	    session_unset($_SESSION['username']);
+	    session_unset($_SESSION['first_name']);
+	    session_unset($_SESSION['last_name']);
+	    session_unset($_SESSION['email']);
+	    session_unset($_SESSION['last_login']);
+	    session_unset();
+	    
+	    session_destroy();
+	    
+	    header('Location: '.$this-> baseUrl);
+	    die();
+
+	}
+
 }
 
 ?>

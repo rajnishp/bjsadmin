@@ -1,173 +1,324 @@
-<?php 
+<!--MAIN NAVIGATION-->
+      <!--===================================================-->
+      <nav id="mainnav-container">
+        <div id="mainnav">
 
-if(!isset($_SESSION['username'])){
-  require_once 'views/navbar/navbar.php';;
-}
-else {
+          <!--Shortcut buttons-->
+          <!--================================-->
+          <div id="mainnav-shortcut">
+            <ul class="list-unstyled">
+              <li class="col-xs-4" data-content="Additional Sidebar">
+                <a id="demo-toggle-aside" class="shortcut-grid" href="#">
+                  <i class="fa fa-magic"></i>
+                </a>
+              </li>
+              <li class="col-xs-4" data-content="Notification">
+                <a id="demo-alert" class="shortcut-grid" href="#">
+                  <i class="fa fa-bullhorn"></i>
+                </a>
+              </li>
+              <li class="col-xs-4" data-content="Page Alerts">
+                <a id="demo-page-alert" class="shortcut-grid" href="#">
+                  <i class="fa fa-bell"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!--================================-->
+          <!--End shortcut buttons-->
 
-?>
-  <!--NAVBAR-->
-    <!--===================================================-->
-    <header id="navbar">
-      <div id="navbar-container" class="boxed">
 
-        <!--Brand logo & name-->
-        <!--================================-->
-        <div class="navbar-header">
-          <a href="<?= $baseUrl ?>" class="navbar-brand">
-            <img src="<?= $baseUrl ?>static/img/collap.jpg" alt="Collap Logo" class="brand-icon">
-            <div class="brand-title">
-              <span class="brand-text">Collap</span>
-            </div>
-          </a>
-        </div>
-
-        <!--================================-->
-        <!--End brand logo & name-->
-
-
-        <!--Navbar Dropdown-->
-        <!--================================-->
-        <div class="navbar-content clearfix">
-          <ul class="nav navbar-top-links pull-left">
-
-            <!--Navigation toogle button-->
-            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-            <li class="tgl-menu-btn">
-              <a class="mainnav-toggle" href="#" id="nav-controller">
-                <i class="fa fa-navicon fa-lg"></i>
-              </a>
-            </li>
-            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-            <!--End Navigation toogle button-->
-          
-            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
+          <!--Menu-->
+          <!--================================-->
+          <div id="mainnav-menu-wrap">
+            <div class="nano">
+              <div class="nano-content">
+                <ul id="mainnav-menu" class="list-group">
             
+                  <!--Category name-->
+                  <li class="list-header">Navigation</li>
+            
+                  <!--Menu list item-->
+                  <li>
+                    <a href="index.html">
+                      <i class="fa fa-dashboard"></i>
+                      <span class="menu-title">
+                        <strong>Dashboard</strong>
+                        <span class="label label-success pull-right">Top</span>
+                      </span>
+                    </a>
+                  </li>
+            
+                  <!--Menu list item-->
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-th"></i>
+                      <span class="menu-title">
+                        <strong>Layouts</strong>
+                      </span>
+                      <i class="arrow"></i>
+                    </a>
+            
+                    <!--Submenu-->
+                    <ul class="collapse">
+                      <li><a href="layouts-collapsed-navigation.html">Collapsed Navigation</a></li>
+                      <li><a href="layouts-offcanvas-navigation.html">Off-Canvas Navigation</a></li>
+                      <li><a href="layouts-offcanvas-slide-in-navigation.html">Slide-in Navigation</a></li>
+                      <li><a href="layouts-offcanvas-revealing-navigation.html">Revealing Navigation</a></li>
+                      <li class="list-divider"></li>
+                      <li><a href="layouts-aside-right-side.html">Aside on the right side</a></li>
+                      <li><a href="layouts-aside-left-side.html">Aside on the left side</a></li>
+                      <li><a href="layouts-aside-bright-theme.html">Bright aside theme</a></li>
+                      <li class="list-divider"></li>
+                      <li><a href="layouts-fixed-navbar.html">Fixed Navbar</a></li>
+                      <li><a href="layouts-fixed-footer.html">Fixed Footer</a></li>
+                      
+                    </ul>
+                  </li>
+            
+                  <!--Menu list item-->
+                  <li>
+                    <a href="widgets.html">
+                      <i class="fa fa-flask"></i>
+                      <span class="menu-title">
+                        <strong>Widgets</strong>
+                        <span class="pull-right badge badge-warning">9</span>
+                      </span>
+                    </a>
+                  </li>
+            
+                  <li class="list-divider"></li>
+            
+                  <!--Category name-->
+                  <li class="list-header">Components</li>
+            
+                  <!--Menu list item-->
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-briefcase"></i>
+                      <span class="menu-title">UI Elements</span>
+                      <i class="arrow"></i>
+                    </a>
+            
+                    <!--Submenu-->
+                    <ul class="collapse">
+                      <li><a href="ui-buttons.html">Buttons</a></li>
+                      <li><a href="ui-checkboxes-radio.html">Checkboxes &amp; Radio</a></li>
+                      <li><a href="ui-panels.html">Panels</a></li>
+                      <li><a href="ui-modals.html">Modals</a></li>
+                      <li><a href="ui-progress-bars.html">Progress bars</a></li>
+                      <li><a href="ui-components.html">Components</a></li>
+                      <li><a href="ui-typography.html">Typography</a></li>
+                      <li><a href="ui-list-group.html">List Group</a></li>
+                      <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
+                      <li><a href="ui-alerts-tooltips.html">Alerts &amp; Tooltips</a></li>
+                      <li><a href="ui-helper-classes.html">Helper Classes</a></li>
+                      
+                    </ul>
+                  </li>
+            
+                  <!--Menu list item-->
+                  <li class="active-sub">
+                    <a href="#">
+                      <i class="fa fa-edit"></i>
+                      <span class="menu-title">Forms</span>
+                      <i class="arrow"></i>
+                    </a>
+            
+                    <!--Submenu-->
+                    <ul class="collapse in">
+                      <li><a href="forms-general.html">General</a></li>
+                      <li class="active-link"><a href="forms-components.html">Components</a></li>
+                      <li><a href="forms-validation.html">Validation</a></li>
+                      <li><a href="forms-wizard.html">Wizard</a></li>
+                      
+                    </ul>
+                  </li>
+            
+                  <!--Menu list item-->
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-table"></i>
+                      <span class="menu-title">Tables</span>
+                      <i class="arrow"></i>
+                    </a>
+            
+                    <!--Submenu-->
+                    <ul class="collapse">
+                      <li><a href="tables-static.html">Static Tables</a></li>
+                      <li><a href="tables-bootstrap.html">Bootstrap Tables</a></li>
+                      <li><a href="tables-datatable.html">Data Tables<span class="label label-info pull-right">New</span></a></li>
+                      <li><a href="tables-footable.html">Foo Tables<span class="label label-info pull-right">New</span></a></li>
+                      
+                    </ul>
+                  </li>
+            
+                  <!--Menu list item-->
+                  <li>
+                    <a href="charts.html">
+                      <i class="fa fa-line-chart"></i>
+                      <span class="menu-title">Charts</span>
+                    </a>
+                  </li>
+            
+                  <li class="list-divider"></li>
+            
+                  <!--Category name-->
+                  <li class="list-header">Extra</li>
+            
+                  <!--Menu list item-->
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-plug"></i>
+                      <span class="menu-title">
+                        Miscellaneous
+                        <span class="label label-mint pull-right">New</span>
+                      </span>
+                    </a>
+            
+                    <!--Submenu-->
+                    <ul class="collapse">
+                      <li><a href="misc-calendar.html">Calendar</a></li>
+                      <li><a href="misc-maps.html">Google Maps</a></li>
+                      
+                    </ul>
+                  </li>
+            
+                  <!--Menu list item-->
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-envelope"></i>
+                      <span class="menu-title">Email</span>
+                      <i class="arrow"></i>
+                    </a>
+            
+                    <!--Submenu-->
+                    <ul class="collapse">
+                      <li><a href="mailbox.html">Inbox</a></li>
+                      <li><a href="mailbox-message.html">View Message</a></li>
+                      <li><a href="mailbox-compose.html">Compose Message</a></li>
+                      
+                    </ul>
+                  </li>
+            
+                  <!--Menu list item-->
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-file"></i>
+                      <span class="menu-title">Pages</span>
+                      <i class="arrow"></i>
+                    </a>
+            
+                    <!--Submenu-->
+                    <ul class="collapse">
+                      <li><a href="pages-blank.html">Blank Page</a></li>
+                      <li><a href="pages-profile.html">Profile</a></li>
+                      <li><a href="pages-search-results.html">Search Results</a></li>
+                      <li><a href="pages-timeline.html">Timeline<span class="label label-info pull-right">New</span></a></li>
+                      <li><a href="pages-faq.html">FAQ</a></li>
+                      <li class="list-divider"></li>
+                      <li><a href="pages-404.html">404 Error</a></li>
+                      <li><a href="pages-500.html">500 Error</a></li>
+                      <li class="list-divider"></li>
+                      <li><a href="pages-login.html">Login</a></li>
+                      <li><a href="pages-register.html">Register</a></li>
+                      <li><a href="pages-password-reminder.html">Password Reminder</a></li>
+                      <li><a href="pages-lock-screen.html">Lock Screen</a></li>
+                      
+                    </ul>
+                  </li>
+
+                  <!--Menu list item-->
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-plus-square"></i>
+                      <span class="menu-title">Menu Level</span>
+                      <i class="arrow"></i>
+                    </a>
+
+                    <!--Submenu-->
+                    <ul class="collapse">
+                      <li><a href="#">Second Level Item</a></li>
+                      <li><a href="#">Second Level Item</a></li>
+                      <li><a href="#">Second Level Item</a></li>
+                      <li class="list-divider"></li>
+                      <li>
+                        <a href="#">Third Level<i class="arrow"></i></a>
+
+                        <!--Submenu-->
+                        <ul class="collapse">
+                          <li><a href="#">Third Level Item</a></li>
+                          <li><a href="#">Third Level Item</a></li>
+                          <li><a href="#">Third Level Item</a></li>
+                          <li><a href="#">Third Level Item</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#">Third Level<i class="arrow"></i></a>
+
+                        <!--Submenu-->
+                        <ul class="collapse">
+                          <li><a href="#">Third Level Item</a></li>
+                          <li><a href="#">Third Level Item</a></li>
+                          <li><a href="#">Third Level Item</a></li>
+                          <li class="list-divider"></li>
+                          <li><a href="#">Third Level Item</a></li>
+                          <li><a href="#">Third Level Item</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+                </ul>
 
 
-            <!--Notification dropdown-->
-            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-            <li class="dropdown">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                <i class="fa fa-bell fa-lg"></i>
-                <!-- <span class="badge badge-header badge-danger">5</span> -->
-              </a>
+                <!--Widget-->
+                <!--================================-->
+                <div class="mainnav-widget">
 
-              <!--Notification dropdown menu-->
-              <div class="dropdown-menu dropdown-menu-md with-arrow">
-                <div class="pad-all bord-btm">
-                  <!-- <p class="text-lg text-muted text-thin mar-no">You have 3 messages.</p> -->
-                </div>
-                <div class="nano scrollable">
-                  <div class="nano-content">
-                    <ul class="head-list">
-                  
-                      <!-- Dropdown list-->
-                      <?php foreach ($this->notifications as $key => $value) { ?>
-                        <!-- Dropdown list-->
-                        <li>
-                          <?= $value->getNoticelUrl() ?>
-                        </li>
-                      <?php } ?>
-                  
-                      <!-- Dropdown list-->
-                      <!-- <li>
-                        <a href="#" class="media">
-                          <div class="media-left">
-                            <span class="icon-wrap bg-success">
-                              <i class="fa fa-user fa-lg"></i>
-                            </span>
+                  <!-- Show the button on collapsed navigation -->
+                  <div class="show-small">
+                    <a href="#" data-toggle="menu-widget" data-target="#demo-wg-server">
+                      <i class="fa fa-desktop"></i>
+                    </a>
+                  </div>
+
+                  <!-- Hide the content on collapsed navigation -->
+                  <div id="demo-wg-server" class="hide-small mainnav-widget-content">
+                    <ul class="list-group">
+                      <li class="list-header pad-no pad-ver">Server Status</li>
+                      <li class="mar-btm">
+                        <span class="label label-primary pull-right">15%</span>
+                        <p>CPU Usage</p>
+                        <div class="progress progress-sm">
+                          <div class="progress-bar progress-bar-primary" style="width: 15%;">
+                            <span class="sr-only">15%</span>
                           </div>
-                          <div class="media-body">
-                            <div class="text-nowrap">New User Registered</div>
-                            <small class="text-muted">4 minutes ago</small>
+                        </div>
+                      </li>
+                      <li class="mar-btm">
+                        <span class="label label-purple pull-right">75%</span>
+                        <p>Bandwidth</p>
+                        <div class="progress progress-sm">
+                          <div class="progress-bar progress-bar-purple" style="width: 75%;">
+                            <span class="sr-only">75%</span>
                           </div>
-                        </a>
-                      </li> -->
+                        </div>
+                      </li>
+                      <li class="pad-ver"><a href="#" class="btn btn-success btn-bock">View Details</a></li>
                     </ul>
                   </div>
                 </div>
+                <!--================================-->
+                <!--End widget-->
 
-                <!--Dropdown footer-->
-                <div class="pad-all bord-top">
-                  <a href="#" class="btn-link text-dark box-block">
-                    <i class="fa fa-angle-right fa-lg pull-right"></i>Show All Notifications
-                  </a>
-                </div>
               </div>
-            </li>
-            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-            <!--End notifications dropdown-->
+            </div>
+          </div>
+          <!--================================-->
+          <!--End menu-->
 
-            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
-            <li></li>
-            <li></li>
-            <!-- <li>
-              <form class="" role="search" style="margin-top: 8px; margin-left: 8px" >
-                <input type="text" class="form-control input-md mainnav-search-query" placeholder="Search">
-                <button class="btn btn-sm mainnav-form-btn" style="margin-top: 8px;"><i class="fa fa-search"></i></button>
-              </form>
-            </li> -->
-
-          </ul>
-
-
-            
-  
-
-          <ul class="nav navbar-top-links pull-right">
-            
-            <!--User dropdown-->
-            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-            <li id="dropdown-user" class="dropdown">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
-                <span class="pull-right">
-                  <img class="img-circle img-user media-object" src="/uploads/profilePictures/<?= $_SESSION['username'] ?>.jpg" alt="Profile Picture">
-                </span>
-                <div class="username hidden-xs"><?= ucfirst($_SESSION['first_name']) ?></div>
-              </a>
-
-
-              <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
-
-                <!-- User dropdown menu -->
-                <ul class="head-list">
-                  <li>
-                    <a href="<?= $baseUrl ?>profile">
-                      <i class="fa fa-user fa-fw fa-lg"></i> Profile
-                    </a>
-                  </li>
-                 
-                  <li>
-                    <a href="<?= $baseUrl ?>setting">
-                      <i class="fa fa-gear fa-fw fa-lg"></i> Settings
-                    </a>
-                  </li>
-                 
-                </ul>
-
-                <!-- Dropdown footer -->
-                <div class="pad-all text-right">
-                  <a href="<?= $baseUrl ?>home/logout" class="btn btn-primary">
-                    <i class="fa fa-sign-out fa-fw"></i> Logout
-                  </a>
-                </div>
-              </div>
-            </li>
-            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-            <!--End user dropdown-->
-            
-          </ul>
         </div>
-        <!--================================-->
-        <!--End Navbar Dropdown-->
-
-      
-
-    </div> <!-- /.navbar-container -->
-    </header>
-    <!--===================================================-->
-    <!--END NAVBAR-->
-<?php } ?>
+      </nav>
+      <!--===================================================-->
+      <!--END MAIN NAVIGATION-->

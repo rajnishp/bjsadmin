@@ -290,7 +290,7 @@
               cache: false,
               success: function(result){
                 console.log("insode success");
-                alert(result);
+                //alert(result);
                 var hash = window.location.hash.slice(); //Puts hash in variable, and removes the # character;
                 if (hash){
                   hash = (hash.split("?")[1]).split("=")[1];
@@ -302,7 +302,7 @@
               },
               error: function(result){
                 console.log("insode error");
-                alert(result);
+                //alert(result);
                 $('#username').css("border-color", "red");
                 $('#password').css("border-color", "red");
 

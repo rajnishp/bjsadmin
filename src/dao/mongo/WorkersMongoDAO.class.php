@@ -73,6 +73,25 @@
             );
         }
 
+
+        public function loadAllWorkers() {
+            global $logger;
+            //$allWorkers = $mongoCustomersInConflict = null;
+
+            $logger -> debug ("Selecting collection: workers");
+            $this -> mongo -> selectCollection('workers');     
+
+            $mongoWorkers = $this -> mongo -> find(array());
+            foreach ($mongoWorkers as $worker) {
+                $allWorkers [] = new Worker($worker['firstName'], $worker['lastName'],null, null, null, null, null, 
+                                            $worker['mobile'],null, null, null, $worker['skills'], $worker['experience'], null,
+                                            $worker['currentWorkingCity'], $worker['currentWorkingArea'], $worker['preferredWorkingCity'],$worker['preferredWorkingArea'],null, null, null, null, null,
+                                            $worker['gender'], null, null);
+            }
+            
+            return $allWorkers;
+        }
+
         public function update($customer, $raw) {
             global $logger, $warnings_payload;
             $customerResult = $deleteIdentifierMappings = $identifierMappingsResult = $rawResult = array(); 

@@ -18,13 +18,16 @@
 		private $mobile;
 		private $emergencyMobile;
 		private $education;
+
 		private $languages;
-		
 		private $skills;
+
 		private $experience;
 		private $workingDomain;
 		
+		private $currentWorkingCity;
 		private $currentWorkingArea;
+		private $preferredWorkingCity;
 		private $preferredworkingArea;
 		
 		private $guessedSalary;
@@ -41,7 +44,7 @@
 		function __construct ($firstName, $lastName, $addressProofName, $addressProofId, 
 							$idProofName, $idProofId, $address, $mobile, 
 							$emergencyMobile, $education, $languages, $skills, 
-							$experience, $workingDomain, $currentWorkingArea, $preferredworkingArea, 
+							$experience, $workingDomain, $currentWorkingCity, $currentWorkingArea, $preferredWorkingCity, $preferredWorkingArea, 
 							$guessedSalary, $verificationStatus, $workTimeSlots, $freeTimeSlots, 
 							$birthDate, $gender, $addedOn, $lastUpdateOn, $uuid = null) {
 			
@@ -60,8 +63,12 @@
 			$this -> skills = $skills;
 			$this -> experience = $experience;
 			$this -> workingDomain = $workingDomain;
+
+			$this -> currentWorkingCity = $currentWorkingCity;
 			$this -> currentWorkingArea = $currentWorkingArea;
-			$this -> preferredworkingArea = $preferredworkingArea;
+			$this -> preferredWorkingCity = $preferredWorkingCity;
+			$this -> preferredWorkingArea = $preferredWorkingArea;
+
 			$this -> guessedSalary = $guessedSalary;
 			$this -> verificationStatus = $verificationStatus;
 			$this -> workTimeSlots = $workTimeSlots;
@@ -161,7 +168,7 @@
 			$this -> skills = $skills;
 		}
 		function getSkills(){
-			return $this-> languages;
+			return $this-> skills;
 		}
 
 		function setExperience($experience){
@@ -185,11 +192,25 @@
 			return $this-> currentWorkingArea;
 		}
 
-		function setPreferredworkingArea($preferredworkingArea){
-			$this -> preferredworkingArea = $preferredworkingArea;
+		function setCurrentWorkingCity($currentWorkingCity){
+			$this -> currentWorkingCity = $currentWorkingCity;
 		}
-		function getPreferredworkingArea(){
-			return $this-> preferredworkingArea;
+		function getCurrentWorkingCity(){
+			return $this-> currentWorkingCity;
+		}
+
+		function setPreferredWorkingArea($preferredWorkingArea){
+			$this -> preferredWorkingArea = $preferredWorkingArea;
+		}
+		function getPreferredWorkingArea(){
+			return $this-> preferredWorkingArea;
+		}
+
+		function setPreferredWorkingCity($preferredWorkingCity){
+			$this -> preferredWorkingCity = $preferredWorkingCity;
+		}
+		function getPreferredWorkingCity(){
+			return $this-> preferredWorkingCity;
 		}
 
 		function setGuessedSalary($guessedSalary){
@@ -261,12 +282,14 @@
 							mobile => $this -> mobile,
 							emergencyMobile=> $this -> emergencyMobile,
 							education => $this -> education,
-							languages => $this -> languages,
-							skills => $this -> skills,
+							languages => $this-> languages,
+							skills => $this-> skills,
 							experience => $this -> experience,
 							workingDomain=> $this -> workingDomain,
+							currentWorkingCity => $this -> currentWorkingCity,
 							currentWorkingArea => $this -> currentWorkingArea,
-							preferredworkingArea => $this -> preferredworkingArea,
+							preferredWorkingCity => $this -> preferredWorkingCity,
+							preferredWorkingArea => $this -> preferredWorkingArea,
 							guessedSalary => $this -> guessedSalary,
 							verificationStatus => $this -> verificationStatus,
 							workTimeSlots=> $this -> workTimeSlots,

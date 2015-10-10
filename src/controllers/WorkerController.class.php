@@ -18,6 +18,10 @@ class WorkerController extends BaseController {
 
 		try{
 			if (isset($this-> username)){
+				$allWorkers = $this -> workerDAO -> loadAllWorkers();
+				//var_dump($allWorkers);
+				//die();
+
 				require_once 'views/workers/workers.php';
 			}
 			else {
