@@ -11,6 +11,7 @@ abstract class BaseController {
 	protected $baseUrl;
 	protected $employeeDAO;
 	protected $workerDAO;
+	protected $serviceRequestDAO;
 
 
 	function __construct (  ){
@@ -40,6 +41,7 @@ abstract class BaseController {
 		
 		$this -> employeeDAO = $DAOFactory->getEmployeesDAO();
 		$this -> workerDAO = $DAOFactory->getWorkersDAO();
+		$this -> serviceRequestDAO = $DAOFactory->getServiceRequestDAO();
 		
 		$this->process();
 

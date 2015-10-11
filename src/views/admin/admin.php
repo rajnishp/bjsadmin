@@ -36,12 +36,28 @@
 								<div class="pad-all text-center">
 									<span class="text-5x text-thin"></span>
 									<p>List All Workers</p>
+									<i class="fa fa-users"></i>
+								</div>
+							</div>
+						</a>
+
+					</div>
+
+					<div class="col-sm-6 col-md-4 col-lg-3">
+
+						<!--Sales tile-->
+						<a href="<?= $this -> baseUrl ?>requests" >
+							<div class="panel panel-primary panel-colorful">
+								<div class="pad-all text-center">
+									<span class="text-5x text-thin"></span>
+									<p>List All Requests</p>
 									<i class="fa fa-shopping-cart"></i>
 								</div>
 							</div>
 						</a>
 
 					</div>
+
 					<div class="col-sm-6 col-md-4 col-lg-3">
 
 						<!--Messages tile-->
@@ -56,7 +72,7 @@
 						</a>
 
 					</div>
-					<div class="col-sm-6 col-md-4 col-lg-3">
+					<div class="col-sm-6 col-md-4 col-lg-3 col-lg-offset-1">
 
 						<!--Projects-->
 						<a href="<?= $this -> baseUrl ?>home/logout" >

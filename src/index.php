@@ -11,6 +11,8 @@ session_set_cookie_params(728000);
 
 include_once "controllers/HomeController.class.php";
 include_once "controllers/WorkerController.class.php";
+include_once "controllers/ServiceRequestsController.class.php";
+
 
 require_once 'utils/Util.php';
 require_once 'utils/Timer.php';
@@ -127,6 +129,23 @@ $logger -> debug ("get :: " .json_encode($_GET));
 					//addNewWorker is post worker detail for new worker
 					default:
 						$workerController -> render ();
+						break;
+				}
+
+				break;
+
+			case "requests":
+				$serviceRequestsController = new ServiceRequestsController();
+
+				$where = $route[2];
+
+				switch ($where) {
+
+					case 'addNew':
+						$serviceRequestsController -> addNew();
+						break;
+					default:
+						$serviceRequestsController -> render ();
 						break;
 				}
 

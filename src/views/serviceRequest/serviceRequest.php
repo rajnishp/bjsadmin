@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>BlueTeam | List All Workers</title>
+	<title>BlueTeam Admin | List all Service Requests</title>
 
 	<?php require_once 'views/header/header.php'; ?>
 
@@ -25,7 +25,7 @@
 					<!--===================================================-->
 					<div class="panel">
 						<div class="panel-heading">
-							<h3 class="panel-title">List of All Workers</h3>
+							<h3 class="panel-title">List of all Service Requests</h3>
 						</div>
 					
 						<div id="demo-custom-toolbar2" class="table-toolbar-left">
@@ -38,24 +38,22 @@
 									<tr>
 										<th>Name</th>
 										<th>Contact No</th>
-										<th>Skills</th>
-										<th class="min-tablet">Experience</th>
-										<th class="min-tablet">Gender</th>
-										<th class="min-desktop">Current Working Area</th>
-										<th class="min-desktop">Preferred Working Area</th>
+										<th>Address</th>
+										<th class="min-tablet">Service Type</th>
+										<th class="min-tablet">Deliver Status</th>
+										<th class="min-desktop">Request Time</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($allWorkers as $worker) { ?>
+									<?php foreach ($allRequests as $serviceRequest) { ?>
 										<tr>
-											<td><?= $worker -> getFirstName() ?>  <?= $worker -> getLastName() ?></td>
-											<td><?= $worker-> getMobile() ?> </td>
-											<td><?= $worker-> getSkills() ?> </td>
-											<td><?= $worker-> getExperience() ?> </td>
-											<td><?= $worker-> getGender() ?> </td>
-											<td><?= $worker-> getCurrentWorkingCity() ?>, <?= $worker-> getCurrentWorkingArea() ?></td>
-											<td><?= $worker-> getPreferredWorkingCity() ?>, <?= $worker-> getPreferredWorkingArea() ?></td>
-											 
+											<td><?= $serviceRequest-> getName() ?></td>
+											<td><?= $serviceRequest-> getMobile() ?> </td>
+											<td><?= $serviceRequest-> getAddress() ?> </td>
+											<td><?= $serviceRequest-> getType() ?> </td>
+											<td><?= $serviceRequest-> getStatus() ?> </td>
+											<td><?= $serviceRequest-> getAddedOn() ?></td>
+										
 										</tr>
 									<?php } ?>
 

@@ -16,7 +16,7 @@ require_once('utils/ArrayList.class.php');
 class DAOFactory{
 
 	/**
-	 * @return ServiceRequestsDAO
+	 * @return WorkersMongoDAO
 	 */
 	public static function getWorkersDAO(){
 		
@@ -28,7 +28,7 @@ class DAOFactory{
 	}
 
 	/**
-	 * @return UserInfoDAO
+	 * @return EmployeesMongoDAO
 	 */
 	public static function getEmployeesDAO(){
 		
@@ -37,6 +37,18 @@ class DAOFactory{
 		require_once('mongo/EmployeesMongoDAO.class.php');
 
 		return new EmployeesMongoDAO();
+	}
+
+	/**
+	 * @return ServiceRequestsDAO
+	 */
+	public static function getServiceRequestDAO(){
+		
+		require_once('ServiceRequestsDAO.interface.php');
+		require_once('models/ServiceRequests.class.php');
+		require_once('mongo/ServiceRequestsMongoDAO.class.php');
+
+		return new ServiceRequestsMongoDAO();
 	}
 
 }
