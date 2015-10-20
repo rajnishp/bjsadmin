@@ -40,235 +40,40 @@
             
                   <!--Menu list item-->
                   <li>
-                    <a href="index.html">
-                      <i class="fa fa-dashboard"></i>
+                    <a href="<?= $this -> baseUrl ?>workers/workers" >
+                      <i class="fa fa-users"></i>
                       <span class="menu-title">
-                        <strong>Dashboard</strong>
-                        <span class="label label-success pull-right">Top</span>
+                        <strong>List All Workers</strong>
+                        <!-- <span class="label label-success pull-right">Top</span> -->
                       </span>
+                    </a>
+
+                  </li>
+            
+                  <!--Menu list item-->
+                  <li>
+                    <a href="<?= $this -> baseUrl ?>requests" >
+                      <i class="fa fa-shopping-cart"></i>
+                      <span class="menu-title">
+                        <strong>List All Requests</strong>
+                      </span>
+                      <!-- <i class="arrow"></i> -->
                     </a>
                   </li>
             
                   <!--Menu list item-->
                   <li>
-                    <a href="#">
-                      <i class="fa fa-th"></i>
+                    <a href="<?= $this -> baseUrl ?>workers/addNew" >
+                      <i class="fa fa-plus"></i>
                       <span class="menu-title">
-                        <strong>Layouts</strong>
-                      </span>
-                      <i class="arrow"></i>
-                    </a>
-            
-                    <!--Submenu-->
-                    <ul class="collapse">
-                      <li><a href="layouts-collapsed-navigation.html">Collapsed Navigation</a></li>
-                      <li><a href="layouts-offcanvas-navigation.html">Off-Canvas Navigation</a></li>
-                      <li><a href="layouts-offcanvas-slide-in-navigation.html">Slide-in Navigation</a></li>
-                      <li><a href="layouts-offcanvas-revealing-navigation.html">Revealing Navigation</a></li>
-                      <li class="list-divider"></li>
-                      <li><a href="layouts-aside-right-side.html">Aside on the right side</a></li>
-                      <li><a href="layouts-aside-left-side.html">Aside on the left side</a></li>
-                      <li><a href="layouts-aside-bright-theme.html">Bright aside theme</a></li>
-                      <li class="list-divider"></li>
-                      <li><a href="layouts-fixed-navbar.html">Fixed Navbar</a></li>
-                      <li><a href="layouts-fixed-footer.html">Fixed Footer</a></li>
-                      
-                    </ul>
-                  </li>
-            
-                  <!--Menu list item-->
-                  <li>
-                    <a href="widgets.html">
-                      <i class="fa fa-flask"></i>
-                      <span class="menu-title">
-                        <strong>Widgets</strong>
-                        <span class="pull-right badge badge-warning">9</span>
+                        <strong>Add New Worker</strong>
+                        <!-- <span class="pull-right badge badge-warning">9</span> -->
                       </span>
                     </a>
                   </li>
             
                   <li class="list-divider"></li>
             
-                  <!--Category name-->
-                  <li class="list-header">Components</li>
-            
-                  <!--Menu list item-->
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-briefcase"></i>
-                      <span class="menu-title">UI Elements</span>
-                      <i class="arrow"></i>
-                    </a>
-            
-                    <!--Submenu-->
-                    <ul class="collapse">
-                      <li><a href="ui-buttons.html">Buttons</a></li>
-                      <li><a href="ui-checkboxes-radio.html">Checkboxes &amp; Radio</a></li>
-                      <li><a href="ui-panels.html">Panels</a></li>
-                      <li><a href="ui-modals.html">Modals</a></li>
-                      <li><a href="ui-progress-bars.html">Progress bars</a></li>
-                      <li><a href="ui-components.html">Components</a></li>
-                      <li><a href="ui-typography.html">Typography</a></li>
-                      <li><a href="ui-list-group.html">List Group</a></li>
-                      <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
-                      <li><a href="ui-alerts-tooltips.html">Alerts &amp; Tooltips</a></li>
-                      <li><a href="ui-helper-classes.html">Helper Classes</a></li>
-                      
-                    </ul>
-                  </li>
-            
-                  <!--Menu list item-->
-                  <li class="active-sub">
-                    <a href="#">
-                      <i class="fa fa-edit"></i>
-                      <span class="menu-title">Forms</span>
-                      <i class="arrow"></i>
-                    </a>
-            
-                    <!--Submenu-->
-                    <ul class="collapse in">
-                      <li><a href="forms-general.html">General</a></li>
-                      <li class="active-link"><a href="forms-components.html">Components</a></li>
-                      <li><a href="forms-validation.html">Validation</a></li>
-                      <li><a href="forms-wizard.html">Wizard</a></li>
-                      
-                    </ul>
-                  </li>
-            
-                  <!--Menu list item-->
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-table"></i>
-                      <span class="menu-title">Tables</span>
-                      <i class="arrow"></i>
-                    </a>
-            
-                    <!--Submenu-->
-                    <ul class="collapse">
-                      <li><a href="tables-static.html">Static Tables</a></li>
-                      <li><a href="tables-bootstrap.html">Bootstrap Tables</a></li>
-                      <li><a href="tables-datatable.html">Data Tables<span class="label label-info pull-right">New</span></a></li>
-                      <li><a href="tables-footable.html">Foo Tables<span class="label label-info pull-right">New</span></a></li>
-                      
-                    </ul>
-                  </li>
-            
-                  <!--Menu list item-->
-                  <li>
-                    <a href="charts.html">
-                      <i class="fa fa-line-chart"></i>
-                      <span class="menu-title">Charts</span>
-                    </a>
-                  </li>
-            
-                  <li class="list-divider"></li>
-            
-                  <!--Category name-->
-                  <li class="list-header">Extra</li>
-            
-                  <!--Menu list item-->
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-plug"></i>
-                      <span class="menu-title">
-                        Miscellaneous
-                        <span class="label label-mint pull-right">New</span>
-                      </span>
-                    </a>
-            
-                    <!--Submenu-->
-                    <ul class="collapse">
-                      <li><a href="misc-calendar.html">Calendar</a></li>
-                      <li><a href="misc-maps.html">Google Maps</a></li>
-                      
-                    </ul>
-                  </li>
-            
-                  <!--Menu list item-->
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-envelope"></i>
-                      <span class="menu-title">Email</span>
-                      <i class="arrow"></i>
-                    </a>
-            
-                    <!--Submenu-->
-                    <ul class="collapse">
-                      <li><a href="mailbox.html">Inbox</a></li>
-                      <li><a href="mailbox-message.html">View Message</a></li>
-                      <li><a href="mailbox-compose.html">Compose Message</a></li>
-                      
-                    </ul>
-                  </li>
-            
-                  <!--Menu list item-->
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-file"></i>
-                      <span class="menu-title">Pages</span>
-                      <i class="arrow"></i>
-                    </a>
-            
-                    <!--Submenu-->
-                    <ul class="collapse">
-                      <li><a href="pages-blank.html">Blank Page</a></li>
-                      <li><a href="pages-profile.html">Profile</a></li>
-                      <li><a href="pages-search-results.html">Search Results</a></li>
-                      <li><a href="pages-timeline.html">Timeline<span class="label label-info pull-right">New</span></a></li>
-                      <li><a href="pages-faq.html">FAQ</a></li>
-                      <li class="list-divider"></li>
-                      <li><a href="pages-404.html">404 Error</a></li>
-                      <li><a href="pages-500.html">500 Error</a></li>
-                      <li class="list-divider"></li>
-                      <li><a href="pages-login.html">Login</a></li>
-                      <li><a href="pages-register.html">Register</a></li>
-                      <li><a href="pages-password-reminder.html">Password Reminder</a></li>
-                      <li><a href="pages-lock-screen.html">Lock Screen</a></li>
-                      
-                    </ul>
-                  </li>
-
-                  <!--Menu list item-->
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-plus-square"></i>
-                      <span class="menu-title">Menu Level</span>
-                      <i class="arrow"></i>
-                    </a>
-
-                    <!--Submenu-->
-                    <ul class="collapse">
-                      <li><a href="#">Second Level Item</a></li>
-                      <li><a href="#">Second Level Item</a></li>
-                      <li><a href="#">Second Level Item</a></li>
-                      <li class="list-divider"></li>
-                      <li>
-                        <a href="#">Third Level<i class="arrow"></i></a>
-
-                        <!--Submenu-->
-                        <ul class="collapse">
-                          <li><a href="#">Third Level Item</a></li>
-                          <li><a href="#">Third Level Item</a></li>
-                          <li><a href="#">Third Level Item</a></li>
-                          <li><a href="#">Third Level Item</a></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="#">Third Level<i class="arrow"></i></a>
-
-                        <!--Submenu-->
-                        <ul class="collapse">
-                          <li><a href="#">Third Level Item</a></li>
-                          <li><a href="#">Third Level Item</a></li>
-                          <li><a href="#">Third Level Item</a></li>
-                          <li class="list-divider"></li>
-                          <li><a href="#">Third Level Item</a></li>
-                          <li><a href="#">Third Level Item</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-
                 </ul>
 
 

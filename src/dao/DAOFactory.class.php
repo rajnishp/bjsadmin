@@ -51,5 +51,17 @@ class DAOFactory{
 		return new ServiceRequestsMongoDAO();
 	}
 
+	/**
+	 * @return AgentsMongoDAO
+	 */
+	public static function getAgentDAO(){
+		
+		require_once('AgentsDAO.interface.php');
+		require_once('models/Agent.class.php');
+		require_once('mongo/AgentsMongoDAO.class.php');
+
+		return new AgentsMongoDAO();
+	}
+
 }
 ?>

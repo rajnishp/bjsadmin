@@ -202,4 +202,100 @@
           }
           return false;
       }
+
+
+
+      function validateAgentRegister() {
+
+            fields = ["company_name", "address", "email", "mobile", "first_name", "username", "password"];
+            
+            if (genericEmptyFieldValidator(fields) ) {
+              alert("inside genericEmptyFvhxbvjhsieldValidator");
+              //$('span[id^="password_span"]').empty();
+              var dataString = "";
+
+              dataString = "company_name=" + $('#company_name').val() + "&address=" + $('#address').val() +
+                            "&email=" + $('#email').val() + "&mobile=" + $('#mobile').val() +
+                            "&first_name=" + $('#first_name').val() + "&last_name=" + $('#last_name').val() + 
+                            "&username=" + $('#username').val() + "&password=" + $('#password').val() ; 
+
+              $.ajax({
+                type: "POST",
+                url: "<?= $this-> agentBaseUrl?>"+"home/signup",
+                data: dataString,
+                cache: false,
+                success: function(result){
+                  alert("inside succeessss");
+                  console.log("insode success");
+                  window.location.reload();
+                  //alert(result);
+                  /*var hash = window.location.hash.slice(); //Puts hash in variable, and removes the # character;
+                  if (hash){
+                    hash = (hash.split("?")[1]).split("=")[1];
+                    window.location.replace(hash);              
+                  }
+                  else{
+                    location.reload();
+                  }*/
+                },
+                error: function(result){
+                  alert("inside error");
+                  console.log("insode error");
+
+                  /*$("#password_span").append("<font color='red'>Incorrect Value for Username or Password</font>");
+                  setTimeout(function () {
+                    $('span[id^="password_span"]').empty();
+                  }, 15000);*/
+                }
+              });
+            }
+        
+        return false;
+    }
+
+    function validateLogin() {
+
+          fields = ["username_login", "password_login"];
+          
+          if (genericEmptyFieldValidator(fields) ) {
+            //$('span[id^="password_span"]').empty();
+            var dataString = "";
+
+            dataString = "username=" + $('#username_login').val() + "&password=" + $('#password_login').val() ; 
+
+            $.ajax({
+              type: "POST",
+              url: "<?= $this-> agentBaseUrl?>"+"home/login",
+              data: dataString,
+              cache: false,
+              success: function(result){
+                alert("inside succeessss");
+                console.log("insode success");
+                window.location.reload();
+                //alert(result);
+                /*var hash = window.location.hash.slice(); //Puts hash in variable, and removes the # character;
+                if (hash){
+                  hash = (hash.split("?")[1]).split("=")[1];
+                  window.location.replace(hash);              
+                }
+                else{
+                  location.reload();
+                }*/
+              },
+              error: function(result){
+                alert("inside error");
+                console.log("insode error");
+
+                /*$("#password_span").append("<font color='red'>Incorrect Value for Username or Password</font>");
+                setTimeout(function () {
+                  $('span[id^="password_span"]').empty();
+                }, 15000);*/
+              }
+            });
+          }
+      
+      return false;
+    }
+
+
   </script>

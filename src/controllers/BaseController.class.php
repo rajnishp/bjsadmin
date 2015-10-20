@@ -9,15 +9,18 @@ require_once 'dao/DAOFactory.class.php';
 abstract class BaseController {
 
 	protected $baseUrl;
+	protected $agentBaseUrl;
 	protected $employeeDAO;
 	protected $workerDAO;
 	protected $serviceRequestDAO;
+	protected $agentDAO;
 
 
 	function __construct (  ){
 		
 		global $configs;
-		$this->baseUrl = $configs["BLUETEAM_BASE_URL"];
+		$this-> baseUrl = $configs["BLUETEAM_BASE_URL"];
+		$this-> agentBaseUrl = $configs["BLUETEAM_AGENT_BASE_URL"];
 
 		$this->url = rtrim($this->baseUrl,"/").$_SERVER[REQUEST_URI];
 
@@ -42,6 +45,7 @@ abstract class BaseController {
 		$this -> employeeDAO = $DAOFactory->getEmployeesDAO();
 		$this -> workerDAO = $DAOFactory->getWorkersDAO();
 		$this -> serviceRequestDAO = $DAOFactory->getServiceRequestDAO();
+		$this -> agentDAO = $DAOFactory->getAgentDAO();
 		
 		$this->process();
 

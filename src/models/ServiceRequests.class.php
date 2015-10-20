@@ -7,7 +7,7 @@
 	 */
 	class ServiceRequests{
 		
-		private $uid;
+		private $uuid;
 		private $name;
 		private $mobile;
 		private $address;
@@ -16,9 +16,9 @@
 		private $addedOn;
 		private $lastUpdateOn;
 
-		function __construct ($name, $mobile, $address, $type, $status, $addedOn, $lastUpdateOn, $uid = null) {
+		function __construct ($name, $mobile, $address, $type, $status, $addedOn, $lastUpdateOn, $uuid = null) {
 			
-			$this -> uid = $uid;
+			$this -> uuid = $uuid;
 			$this -> name = $name;
 			$this -> mobile = $mobile;
 			$this -> address = $address;
@@ -29,11 +29,11 @@
 
 		}
 
-		function setUid($uid){
-			$this -> uid = $uid;
+		function setUuid($uuid){
+			$this -> uuid = $uuid;
 		}
-		function getUid(){
-			return $this-> uid;
+		function getUuid(){
+			return $this-> uuid;
 		}
 
 		function setName($name){

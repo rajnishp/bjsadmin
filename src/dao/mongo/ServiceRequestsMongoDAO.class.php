@@ -3,10 +3,6 @@
 	/**
      * @author rajnish
 	**/
-
-	//require_once 'dao/CustomerIdMappingDAO.interface.php';
-    //require_once 'dao/mysql/CustomerIdMappingMySqlDAO.class.php';
-    //require_once 'models/customer/Customer.class.php';
     
     require_once 'dao/ServiceRequestsDAO.interface.php';
     require_once 'models/ServiceRequests.class.php';
@@ -14,7 +10,6 @@
     require_once 'utils/mongo/MongoDBUtil.class.php';
     require_once 'exceptions/MongoDbException.class.php';
     require_once 'exceptions/DuplicateEntityException.class.php';
-    //require_once 'exceptions/customers/CustomerNotFoundException.class.php';
 
 	class ServiceRequestsMongoDAO implements ServiceRequestsDAO {
 
@@ -52,7 +47,7 @@
 
             $mongoServiceRequests = $this -> mongo -> find(array());
             foreach ($mongoServiceRequests as $serviceRequest) {
-                $allServiceRequests [] = new ServiceRequests($serviceRequest['name'], $serviceRequest['mobile'], $serviceRequest['address'],$serviceRequest['type'], $serviceRequest['status'], $serviceRequest['addedOn'], $serviceRequest['lastUpdateOn']);
+                $allServiceRequests [] = new ServiceRequests($serviceRequest['name'], $serviceRequest['mobile'], $serviceRequest['address'],$serviceRequest['type'], $serviceRequest['status'], $serviceRequest['addedOn'], $serviceRequest['lastUpdateOn'], $serviceRequest['_id']);
             }
             
             return $allServiceRequests;
@@ -142,7 +137,18 @@
             }
 
             return $customer;
-        }  
+        }
+
+        public function updateStatus($status, $uuid) {
+            global $logger, $warnings_payload;
+
+            $newdata = array("status" => $status);
+            $this-> mongo-> selectCollection('service_requests');
+
+            $result = $this-> mongo -> update($uuid, $newdata);
+
+            return $result;
+        }
 
 
         public function delete($uuid) {
@@ -187,7 +193,7 @@
         }
 
 
-        public function load($uuidValues, $orgId = null, $projection = null) {
+        public function loadOld($uuidValues, $orgId = null, $projection = null) {
             global $logger;
             $customerObjs = $output = array();
 
@@ -215,6 +221,18 @@
             foreach ($customers as $uuid => $customer) {
                 $output ['result'] [] = Customer :: deserialize($customer);
             }
+
+            return $output;
+        }
+
+        public function load($uuid) {
+            global $logger;
+            $serviceRequestObjs = $output = array();
+
+            $logger -> debug ("Selecting collection: service_requests");
+            $this -> mongo -> selectCollection('service_requests');     
+
+            $output = $this -> mongo -> load($uuid);
 
             return $output;
         }

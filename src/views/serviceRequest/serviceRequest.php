@@ -22,52 +22,57 @@
 			<div id="content-container">
 
 				<!-- Add Row -->
-					<!--===================================================-->
-					<div class="panel">
-						<div class="panel-heading">
-							<h3 class="panel-title">List of all Service Requests</h3>
-						</div>
-					
-						<div id="demo-custom-toolbar2" class="table-toolbar-left">
-							<a href="<?= $this-> baseUrl ?>workers/addNew" class="btn btn-primary btn-labeled fa fa-plus">Add New Worker</a>
-						</div>
-					
-						<div class="panel-body">
-							<table id="demo-dt-addrow" class="table table-striped table-bordered" cellspacing="0" width="100%">
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Contact No</th>
-										<th>Address</th>
-										<th class="min-tablet">Service Type</th>
-										<th class="min-tablet">Deliver Status</th>
-										<th class="min-desktop">Request Time</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach ($allRequests as $serviceRequest) { ?>
-										<tr>
-											<td><?= $serviceRequest-> getName() ?></td>
-											<td><?= $serviceRequest-> getMobile() ?> </td>
-											<td><?= $serviceRequest-> getAddress() ?> </td>
-											<td><?= $serviceRequest-> getType() ?> </td>
-											<td><?= $serviceRequest-> getStatus() ?> </td>
-											<td><?= $serviceRequest-> getAddedOn() ?></td>
-										
-										</tr>
-									<?php } ?>
-
-									
-								</tbody>
-							</table>
-						</div>
+				<!--===================================================-->
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="panel-title">List of all Service Requests</h3>
 					</div>
-					<!--===================================================-->
-					<!-- End Add Row -->
 				
+					<div id="demo-custom-toolbar2" class="table-toolbar-left">
+						<a href="<?= $this-> baseUrl ?>workers/addNew" class="btn btn-primary btn-labeled fa fa-plus">Add New Worker</a>
+					</div>
 				
-			
+					<div class="panel-body">
+						<table id="demo-dt-addrow" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Contact No</th>
+									<th>Address</th>
+									<th class="min-tablet">Service Type</th>
+									<th class="min-tablet">Deliver Status</th>
+									<th class="min-desktop">Request Time</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach ($allRequests as $serviceRequest) { ?>
+									<tr>
+										<td><?= $serviceRequest-> getName() ?></td>
+										<td><?= $serviceRequest-> getMobile() ?> </td>
+										<td><?= $serviceRequest-> getAddress() ?> </td>
+										<td><?= $serviceRequest-> getType() ?> </td>
+										<td><?= $serviceRequest-> getStatus() ?>
+											<form  onsubmit="return (validateRequestStatus(<?= $serviceRequest-> getUuid() ?>));">
+												<select class="selectpicker" id="request_status">
 
+													<option class="btn-info" value="Request">Request</option>
+													<option class="btn-warning" value="In-progress" >In-progress</option>
+													<option class="btn-success" value="Delivered" >Delivered</option>
+
+												</select>
+												<button type="submit" class="btn btn-primary"> Update </button>
+											</form>
+										</td>
+										<td><?= $serviceRequest-> getAddedOn() ?></td>					
+									</tr>
+								<?php } ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!--===================================================-->
+				<!-- End Add Row -->
+				
 			</div>
 			<!--===================================================-->
 			<!--END CONTENT CONTAINER-->
@@ -92,7 +97,35 @@
 
 	<?php require_once 'views/footer/footer.php'; ?>
 	
+	<script type="text/javascript">
 
+		function validateRequestStatus(uuid) {
+            alert("there");
+            
+            var dataString = "";
+
+            dataString = "request_status=" + $("#request_status").val() + "&uuid=" + uuid ;
+			
+			alert(dataString);
+            
+            $.ajax({
+                type: "POST",
+                url: "<?= $this-> baseUrl?>"+"requests/updateRequestStatus",
+                data: dataString,
+                cache: false,
+                success: function(result){
+                  alert("inside succeessss");
+                  console.log("insode success");
+                },
+                error: function(result){
+                  alert("inside error");
+                  console.log("insode error");
+                }
+            });
+        
+	        return false;
+    	}
+	</script>
 
 </body>
 </html>
