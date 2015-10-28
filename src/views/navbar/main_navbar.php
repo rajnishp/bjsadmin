@@ -60,7 +60,19 @@
                       <!-- <i class="arrow"></i> -->
                     </a>
                   </li>
-            
+
+                   <!--Menu list item-->
+                  <li>
+                    <a href="<?= $this -> baseUrl ?>getInTouch" >
+                      <i class="fa fa-envelope"></i>
+                      <span class="menu-title">
+                        <strong>List All Queries</strong>
+                      </span>
+                      <!-- <i class="arrow"></i> -->
+                    </a>
+                  </li>
+
+
                   <!--Menu list item-->
                   <li>
                     <a href="<?= $this -> baseUrl ?>workers/addNew" >

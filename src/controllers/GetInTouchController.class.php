@@ -3,13 +3,13 @@
 require_once 'controllers/BaseController.class.php';
 require_once 'controllers/EmailController.class.php';
 
-class ServiceRequestsController extends BaseController {
+class GetInTouchController extends BaseController {
 
 	function __construct (  ){
 		
 		parent::__construct();
 
-		$this -> logger -> debug("RequestsController started");
+		$this -> logger -> debug("GetInTouchController started");
 
 	}
 
@@ -18,9 +18,9 @@ class ServiceRequestsController extends BaseController {
 
 		try{
 			if (isset($this-> username)){
-				$allRequests = $this -> serviceRequestDAO -> loadAllServiceRequests();
+				$allGetInTouchMessages = $this -> getInTouchDAO -> loadAllGetInTouchMessages();
 				
-				require_once 'views/serviceRequest/serviceRequest.php';
+				require_once 'views/getInTouch/getInTouch.php';
 			}
 			else {
 				require_once 'views/landing/index.php';
@@ -34,15 +34,15 @@ class ServiceRequestsController extends BaseController {
 
 	}
 
-	function updateRequestStatus() {
+	function updateGetInTouchStatus() {
 
-		if (isset($_POST['request_status']) && isset($_POST['uuid']) && $_POST['request_status'] != '' && $_POST['uuid'] != null) {
+		if (isset($_POST['get_in_touch_status']) && isset($_POST['uuid']) && $_POST['get_in_touch_status'] != '' && $_POST['uuid'] != null) {
 			
 			$uuid = $_POST['uuid'];
-			$request_status = $_POST['request_status'];
+			$get_in_touch_status = $_POST['get_in_touch_status'];
 
 	        try {
-				$this -> serviceRequestDAO -> updateStatus($request_status, $uuid);
+				$this -> getInTouchDAO -> updateStatus($get_in_touch_status, $uuid);
 			}
 			catch (Exception $e){
 				$this->logger->error( "Error occur :500 ".json_encode($e) );

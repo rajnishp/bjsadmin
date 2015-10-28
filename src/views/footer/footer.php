@@ -253,7 +253,7 @@
         return false;
     }
 
-    function validateLogin() {
+    function validateAgentLogin() {
 
           fields = ["username_login", "password_login"];
           

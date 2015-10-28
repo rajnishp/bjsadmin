@@ -4,14 +4,14 @@
      * @author rajnish
 	**/
     
-    require_once 'dao/ServiceRequestsDAO.interface.php';
-    require_once 'models/ServiceRequests.class.php';
+    require_once 'dao/GetInTouchDAO.interface.php';
+    require_once 'models/GetInTouch.class.php';
 
     require_once 'utils/mongo/MongoDBUtil.class.php';
     require_once 'exceptions/MongoDbException.class.php';
     require_once 'exceptions/DuplicateEntityException.class.php';
 
-	class ServiceRequestsMongoDAO implements ServiceRequestsDAO {
+	class GetInTouchMongoDAO implements GetInTouchDAO {
 
         private $mongo;
         
@@ -24,9 +24,9 @@
         public function insert($serviceRequestObj) {
             global $logger, $warnings_payload;
 
-            $logger -> debug("Insert the request into `service_requests` collection");
+            $logger -> debug("Insert the customer into `customers` collection");
 
-            $logger -> debug ("Selecting collection: service_requests");
+            $logger -> debug ("Selecting collection: customers");
             $this -> mongo -> selectCollection('service_requests');
 
 
@@ -39,18 +39,21 @@
             //return $return;
         }
 
-		public function loadAllServiceRequests() {
+		public function loadAllGetInTouchMessages() {
             global $logger;
 
-            $logger -> debug ("Selecting collection: service_requests");
-            $this -> mongo -> selectCollection('service_requests');   
+            $logger -> debug ("Selecting collection: get_in_touch");
+            $this -> mongo -> selectCollection('get_in_touch');     
 
-            $mongoServiceRequests = $this -> mongo -> find(array());
-            foreach ($mongoServiceRequests as $serviceRequest) {
-                $allServiceRequests [] = new ServiceRequests($serviceRequest['name'], $serviceRequest['mobile'], $serviceRequest['address'],$serviceRequest['type'], $serviceRequest['status'], $serviceRequest['addedOn'], $serviceRequest['lastUpdateOn'], $serviceRequest['_id']);
+            $mongoGetInTouch = $this -> mongo -> find(array());
+            foreach ($mongoGetInTouch as $message) {
+                $allMessages [] = new GetInTouch($message['contactName'], $message['contactEmail'], 
+                                                $message['contactSubject'],$message['contactMessage'], 
+                                                $message['status'], $message['addedOn'], 
+                                                $message['_id']);
             }
             
-            return $allServiceRequests;
+            return $allMessages;
         }
 
         public function multiInsert($customerObjs, $raw) {
@@ -140,22 +143,21 @@
         }
 
         public function updateStatus($status, $uuid) {
+            global $logger, $warnings_payload;
 
-            $this-> mongo-> selectCollection('service_requests');
+            $newdata = array("status" => $status);
+            $logger -> debug ("Selecting collection: get_in_touch");
 
-            //$item = $this-> mongo->findOne(array('_id' => new MongoId($uuid)));
-            $criteria = array( '_id' => "$uuid");
-            $update = array($set => array("status" => $status));
+            $this-> mongo-> selectCollection('get_in_touch');
 
             try {
-                //$result = $this-> mongo -> update( array( '_id' => new MongoId($uuid)), array($set => array("status" => $status)) );
-                $this-> mongo -> update( $criteria, $update, array("upsert" => true ));
+                $result = $this-> mongo -> update(array("_id" => $uuid), $newdata);
             }
-            catch (Exception $e){
+            catch(Exception $e) {
                 var_dump($e);
             }
 
-            //return $result;
+            return $result;
         }
 
 

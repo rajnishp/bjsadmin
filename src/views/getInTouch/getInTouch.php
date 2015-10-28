@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>BlueTeam Admin | List all Service Requests</title>
+	<title>BlueTeam Admin | List all Get In Touch Messages</title>
 
 	<?php require_once 'views/header/header.php'; ?>
 
@@ -25,11 +25,7 @@
 				<!--===================================================-->
 				<div class="panel">
 					<div class="panel-heading">
-						<h3 class="panel-title">List of all Service Requests</h3>
-					</div>
-				
-					<div id="demo-custom-toolbar2" class="table-toolbar-left">
-						<a href="<?= $this-> baseUrl ?>workers/addNew" class="btn btn-primary btn-labeled fa fa-plus">Add New Worker</a>
+						<h3 class="panel-title">List of all Get In Touch Messages</h3>
 					</div>
 				
 					<div class="panel-body">
@@ -37,23 +33,23 @@
 							<thead>
 								<tr>
 									<th>Name</th>
-									<th>Contact No</th>
-									<th>Address</th>
-									<th class="min-tablet">Service Type</th>
-									<th class="min-tablet">Deliver Status</th>
-									<th class="min-desktop">Request Time</th>
+									<th>Email</th>
+									<th>Subject</th>
+									<th class="min-tablet">Message</th>
+									<th class="min-tablet">Response Status</th>
+									<th class="min-desktop">Message Time</th>
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach ($allRequests as $serviceRequest) { ?>
+								<?php foreach ($allGetInTouchMessages as $message) { ?>
 									<tr>
-										<td><?= $serviceRequest-> getName() ?></td>
-										<td><?= $serviceRequest-> getMobile() ?> </td>
-										<td><?= $serviceRequest-> getAddress() ?> </td>
-										<td><?= $serviceRequest-> getType() ?> </td>
-										<td><?= $serviceRequest-> getStatus() ?>
-											<form  onsubmit="return (validateRequestStatus('<?= $serviceRequest-> getUuid() ?>'));">
-												<select class="selectpicker" id="request_status">
+										<td><?= $message-> getContactName() ?></td>
+										<td><?= $message-> getContactEmail() ?> </td>
+										<td><?= $message-> getContactSubject() ?> </td>
+										<td><?= $message-> getContactMessage() ?> </td>
+										<td><?= $message-> getStatus() ?>
+											<form  onsubmit="return (validateGetInTouchStatus('<?= $message-> getUuid() ?>'));">
+												<select class="selectpicker" id="get_in_touch_status">
 
 													<option class="btn-info" value="Request">Request</option>
 													<option class="btn-warning" value="In-progress" >In-progress</option>
@@ -63,7 +59,7 @@
 												<button type="submit" class="btn btn-primary"> Update </button>
 											</form>
 										</td>
-										<td><?= $serviceRequest-> getAddedOn() ?></td>					
+										<td><?= $message-> getAddedOn() ?></td>					
 									</tr>
 								<?php } ?>
 							</tbody>
@@ -99,29 +95,27 @@
 	
 	<script type="text/javascript">
 
-		function validateRequestStatus(uuid) {
+		function validateGetInTouchStatus(uuid) {
             alert("there");
             
             var dataString = "";
 
-            dataString = "request_status=" + $("#request_status").val() + "&uuid=" + uuid ;
+            dataString = "get_in_touch_status=" + $("#get_in_touch_status").val() + "&uuid=" + uuid ;
 			
 			alert(dataString);
             
             $.ajax({
                 type: "POST",
-                url: "<?= $this-> baseUrl?>"+"requests/updateRequestStatus",
+                url: "<?= $this-> baseUrl?>"+"getInTouch/updateGetInTouchStatus",
                 data: dataString,
                 cache: false,
                 success: function(result){
-                	alert(result);
-	                alert("inside succeessss");
-	                console.log("insode success");
+                  alert("inside succeessss");
+                  console.log("insode success");
                 },
                 error: function(result){
-                	alert(result);
-    	            alert("inside error");
-        	        console.log("insode error");
+                  alert("inside error");
+                  console.log("insode error");
                 }
             });
         

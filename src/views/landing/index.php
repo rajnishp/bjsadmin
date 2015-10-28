@@ -41,7 +41,7 @@
             <div class="cls-content-sm panel">
                 <div class="panel-body">
                     <p class="pad-btm">Sign In to your account</p>
-                    <form  onsubmit="return (validateLog());" >
+                    <form  onsubmit="return (validateAdminLogin());" >
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
@@ -193,7 +193,7 @@
   
 
   <script type="text/javascript">
-    function validateLog(){
+    function validateAdminLogin(){
         returnBool = true;
         if($('#username').val() == "" || $('#username').val() == null){
             $('#username').css("border-color", "red");

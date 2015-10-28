@@ -13,6 +13,7 @@ include_once "controllers/HomeController.class.php";
 include_once "controllers/AgentHomeController.class.php";
 include_once "controllers/WorkerController.class.php";
 include_once "controllers/ServiceRequestsController.class.php";
+include_once "controllers/GetInTouchController.class.php";
 
 
 require_once 'utils/Util.php';
@@ -153,6 +154,24 @@ $logger -> debug ("get :: " .json_encode($_GET));
 					
 					default:
 						$serviceRequestsController -> render ();
+						break;
+				}
+
+				break;
+
+			case "getInTouch":
+				$getInTouchController = new GetInTouchController();
+
+				$where = $route[2];
+
+				switch ($where) {
+
+					case 'updateGetInTouchStatus':
+						$getInTouchController -> updateGetInTouchStatus();
+						break;
+					
+					default:
+						$getInTouchController -> render ();
 						break;
 				}
 

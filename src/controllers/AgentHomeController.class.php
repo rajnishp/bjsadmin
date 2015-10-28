@@ -97,7 +97,7 @@ class AgentHomeController  extends BaseController {
 	function login (){
 		if(isset($_POST['username'],$_POST['password'])){
 			$this-> agent = $this-> agentDAO -> getByUsernamePassword( $_POST['username'], md5($_POST['password']));
-			var_dump($this->agent); die();
+			
 			if($this-> agent){
 			
 				$_SESSION['uuid'] = $this-> agent -> getUuid();

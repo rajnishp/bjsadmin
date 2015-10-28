@@ -63,5 +63,17 @@ class DAOFactory{
 		return new AgentsMongoDAO();
 	}
 
+	/**
+	 * @return GetInTouchDAO
+	 */
+	public static function getInTouchDAO(){
+		
+		require_once('GetInTouchDAO.interface.php');
+		require_once('models/GetInTouch.class.php');
+		require_once('mongo/GetInTouchMongoDAO.class.php');
+
+		return new GetInTouchMongoDAO();
+	}
+
 }
 ?>
