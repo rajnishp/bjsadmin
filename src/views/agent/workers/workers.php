@@ -25,11 +25,11 @@
 					<!--===================================================-->
 					<div class="panel">
 						<div class="panel-heading">
-							<h3 class="panel-title">List of All Workers</h3>
+							<h3 class="panel-title">List of All Workers added by you</h3>
 						</div>
 					
 						<div id="demo-custom-toolbar2" class="table-toolbar-left">
-							<a href="<?= $this-> baseUrl ?>workers/addNew" class="btn btn-primary btn-labeled fa fa-plus">Add New Worker</a>
+							<a href="<?= $this-> agentBaseUrl ?>admin/workers/addNew" class="btn btn-primary btn-labeled fa fa-plus">Add New Worker</a>
 						</div>
 					
 						<div class="panel-body">
@@ -46,7 +46,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($allWorkers as $worker) { ?>
+									<?php foreach ($agentWorkers as $worker) { ?>
 										<tr>
 											<td><?= $worker -> getFirstName() ?>  <?= $worker -> getLastName() ?></td>
 											<td><?= $worker-> getMobile() ?> </td>

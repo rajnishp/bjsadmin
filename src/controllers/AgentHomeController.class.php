@@ -18,7 +18,7 @@ class AgentHomeController  extends BaseController {
 		
 		try{
 			if (isset($this-> username))
-				require_once 'views/agentDashboard/agent.dashboard.php';
+				require_once 'views/agent/dashboard/agent.php';
 			else
 				require_once 'views/landing/agent.index.php';
 

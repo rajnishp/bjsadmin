@@ -134,13 +134,14 @@
             "&emergancy_mobile=" + $('#emergancy_mobile').val() ;
         
         console.log(dataString);
-        alert(dataString); 
-        $.ajax({
+          $.ajax({
           type: "POST",
           url: "<?= $this->baseUrl ?>workers/addNewWorker",
           data: dataString,
           cache: false,
           success: function(result){
+            alert(result);
+            console.log(result);
             $(fields).each(function(i, idVal){ 
               $("#"+idVal).val(""); 
             });
@@ -150,6 +151,7 @@
             alert("Added Successfully");
           },
           error: function(result){
+            alert(result);
             return false;
           }
         });

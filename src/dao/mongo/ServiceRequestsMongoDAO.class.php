@@ -49,7 +49,10 @@
             foreach ($mongoServiceRequests as $serviceRequest) {
                 $allServiceRequests [] = new ServiceRequests($serviceRequest['name'], $serviceRequest['mobile'], $serviceRequest['address'],$serviceRequest['type'], $serviceRequest['status'], $serviceRequest['addedOn'], $serviceRequest['lastUpdateOn'], $serviceRequest['_id']);
             }
-            
+            foreach ($allServiceRequests as $requestall) {
+                var_dump($requestall);
+                echo "<br/>-------------------------------------------------------------------<br/>";
+            }
             return $allServiceRequests;
         }
 
@@ -159,15 +162,26 @@
         }
 
 
-        public function delete($uuid) {
+        public function delete($uuid) { }
+
+        public function deleteRequest($uuid) {
             global $logger;
 
-            $logger -> debug ("Selecting collection: customers");
-            $this -> mongo -> selectCollection('customers');     
+            $logger -> debug ("Selecting collection: service_requests");
+            $this -> mongo -> selectCollection('service_requests');     
 
-            $result = $this -> mongo -> removeByObjectId($uuid);
+            //$result = $this -> mongo -> removeByObjectId($uuid);
+            try {
+                $criteria = array( '_id' => new MongoId($uuid));
+                $update = array($set => array('status' => "Deleted"));
 
-            if ($result ['ok'] && $result ['n'] > 0) 
+                $result = $this -> mongo -> update($criteria, $update, array("upsert"=>true));
+                
+            }catch(MongoException $mongoException){
+                print $mongoException;
+                exit;
+            }
+            /*if ($result ['ok'] && $result ['n'] > 0) 
                 $hasBeenDeleted = true;
             else if ($result ['ok'] && $result ['n'] == 0)
                 throw new CustomerNotFoundException('uuid', $uuid);
@@ -175,10 +189,11 @@
                 $hasBeenDeleted = false;
 
             if ($hasBeenDeleted) {
-                return $this -> customerIdDAO -> delete($uuid);
+                return $this -> mongo -> delete($uuid);
             }
 
-            return $hasBeenDeleted;
+            return $hasBeenDeleted;*/
+            return $result;
         }
         
         public function deleteByOtherIdentifier($idType, $idValue) {

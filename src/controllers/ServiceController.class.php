@@ -3,13 +3,13 @@
 require_once 'controllers/BaseController.class.php';
 require_once 'controllers/EmailController.class.php';
 
-class ServiceRequestsController extends BaseController {
+class ServiceController extends BaseController {
 
 	function __construct (  ){
 		
 		parent::__construct();
 
-		$this -> logger -> debug("RequestsController started");
+		$this -> logger -> debug("ServiceController started");
 
 	}
 
@@ -18,9 +18,9 @@ class ServiceRequestsController extends BaseController {
 
 		try{
 			if (isset($this-> username)){
-				$allRequests = $this -> serviceRequestDAO -> loadAllServiceRequests();
+				$allRequests = $this -> serviceDAO -> loadAll();
 				
-				require_once 'views/admin/serviceRequest/serviceRequest.php';
+				require_once 'views/admin/services/services.php';
 			}
 			else {
 				require_once 'views/landing/index.php';
@@ -34,7 +34,7 @@ class ServiceRequestsController extends BaseController {
 
 	}
 
-	function updateRequestStatus() {
+	function updateService() {
 
 		if (isset($_POST['request_status']) && isset($_POST['uuid']) && $_POST['request_status'] != '' && $_POST['uuid'] != null) {
 			
@@ -42,7 +42,7 @@ class ServiceRequestsController extends BaseController {
 			$request_status = $_POST['request_status'];
 
 	        try {
-				$this -> serviceRequestDAO -> updateStatus($request_status, $uuid);
+				$this -> serviceDAO -> updateStatus($request_status, $uuid);
 			}
 			catch (Exception $e){
 				$this->logger->error( "Error occur :500 ".json_encode($e) );
@@ -52,27 +52,6 @@ class ServiceRequestsController extends BaseController {
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
 			echo "Select atleast one value";
-			die();
-		}
-	}
-
-	function deleteRequest() {
-
-		if (isset($_POST['uuid']) && $_POST['uuid'] != null) {
-			
-			$uuid = $_POST['uuid'];
-
-	        try {
-				$this -> serviceRequestDAO -> deleteRequest($uuid);
-			}
-			catch (Exception $e){
-				$this->logger->error( "Error occur :500 ".json_encode($e) );
-			}
-
-		}
-		else{
-			header('HTTP/1.1 500 Internal Server Error');
-			echo "Can't delete service request";
 			die();
 		}
 	}

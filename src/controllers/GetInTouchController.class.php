@@ -20,7 +20,7 @@ class GetInTouchController extends BaseController {
 			if (isset($this-> username)){
 				$allGetInTouchMessages = $this -> getInTouchDAO -> loadAllGetInTouchMessages();
 				
-				require_once 'views/getInTouch/getInTouch.php';
+				require_once 'views/admin/getInTouch/getInTouch.php';
 			}
 			else {
 				require_once 'views/landing/index.php';

@@ -35,33 +35,102 @@
               <div class="nano-content">
                 <ul id="mainnav-menu" class="list-group">
             
-                  <!--Category name-->
-                  <li class="list-header">Navigation</li>
             
-                  <!--Menu list item-->
-                  <li>
-                    <a href="<?= $this -> baseUrl ?>workers/workers" >
-                      <i class="fa fa-users"></i>
-                      <span class="menu-title">
-                        <strong>List All Workers</strong>
-                        <!-- <span class="label label-success pull-right">Top</span> -->
-                      </span>
-                    </a>
+                  
 
-                  </li>
-            
-                  <!--Menu list item-->
+                 
                   <li>
-                    <a href="<?= $this -> baseUrl ?>requests" >
-                      <i class="fa fa-shopping-cart"></i>
+                    <a href="#">
+                      <i class="fa fa-th"></i>
+                      
                       <span class="menu-title">
-                        <strong>List All Requests</strong>
+                        
+                        <strong>Workers</strong>
+                        <span class="pull-right badge badge-warning"><?= $this -> freeWorkes ?></span>
+
                       </span>
+                      <i class="arrow"></i>
                       <!-- <i class="arrow"></i> -->
                     </a>
-                  </li>
+            
+                    <!--Submenu-->
+                    <ul class="collapse">
+                      <li><a href="<?= $this -> baseUrl ?>workers/workers"><i class="fa fa-users"></i>List</a></li>
+                      <li><a href="<?= $this -> baseUrl ?>workers/addNew"><i class="fa fa-plus"></i>Add</a></li>
+                      <!-- <li><a href="layouts-offcanvas-slide-in-navigation.html">Slide-in Navigation</a></li>
+                      <li><a href="layouts-offcanvas-revealing-navigation.html">Revealing Navigation</a></li>
+                      <li class="list-divider"></li>
+                      <li><a href="layouts-aside-right-side.html">Aside on the right side</a></li>
+                      <li><a href="layouts-aside-left-side.html">Aside on the left side</a></li>
+                      <li><a href="layouts-aside-bright-theme.html">Bright aside theme</a></li>
+                      <li class="list-divider"></li>
+                      <li><a href="layouts-fixed-navbar.html">Fixed Navbar</a></li>
+                      <li><a href="layouts-fixed-footer.html">Fixed Footer</a></li> -->
+                      
+                   </ul>
+                   </li>
 
-                   <!--Menu list item-->
+                   <li>
+                    <a href="#">
+                      <i class="fa fa-th"></i>
+                      
+                      <span class="menu-title">
+                        
+                        <strong>Requests</strong>
+                        <span class="pull-right badge badge-warning"><?= $this -> pendingRequests ?></span>
+
+                      </span>
+                      <i class="arrow"></i>
+                      <!-- <i class="arrow"></i> -->
+                    </a>
+            
+                    <!--Submenu-->
+                    <ul class="collapse">
+                      <li><a href="<?= $this -> baseUrl ?>requests"><i class="fa fa-shopping-cart"></i>List</a></li>
+                      <li><a href="<?= $this -> baseUrl ?>requests/addNew"><i class="fa fa-plus"></i>Add</a></li>
+                      <!-- <li><a href="layouts-offcanvas-slide-in-navigation.html">Slide-in Navigation</a></li>
+                      <li><a href="layouts-offcanvas-revealing-navigation.html">Revealing Navigation</a></li>
+                      <li class="list-divider"></li>
+                      <li><a href="layouts-aside-right-side.html">Aside on the right side</a></li>
+                      <li><a href="layouts-aside-left-side.html">Aside on the left side</a></li>
+                      <li><a href="layouts-aside-bright-theme.html">Bright aside theme</a></li>
+                      <li class="list-divider"></li>
+                      <li><a href="layouts-fixed-navbar.html">Fixed Navbar</a></li>
+                      <li><a href="layouts-fixed-footer.html">Fixed Footer</a></li> -->
+                      
+                   </ul>
+                   </li>
+
+                   <li>
+                    <a href="#">
+                      <i class="fa fa-th"></i>
+                      
+                      <span class="menu-title">
+                        
+                        <strong>Users</strong>
+                        <span class="pull-right badge badge-warning"><?= $this -> totalUsers ?></span>
+                      </span>
+                      <i class="arrow"></i>
+                      <!-- <i class="arrow"></i> -->
+                    </a>
+            
+                    <!--Submenu-->
+                    <ul class="collapse">
+                      <li><a href="layouts-collapsed-navigation.html">List</a></li>
+                      <li><a href="layouts-offcanvas-navigation.html">Add</a></li>
+                      <!-- <li><a href="layouts-offcanvas-slide-in-navigation.html">Slide-in Navigation</a></li>
+                      <li><a href="layouts-offcanvas-revealing-navigation.html">Revealing Navigation</a></li>
+                      <li class="list-divider"></li>
+                      <li><a href="layouts-aside-right-side.html">Aside on the right side</a></li>
+                      <li><a href="layouts-aside-left-side.html">Aside on the left side</a></li>
+                      <li><a href="layouts-aside-bright-theme.html">Bright aside theme</a></li>
+                      <li class="list-divider"></li>
+                      <li><a href="layouts-fixed-navbar.html">Fixed Navbar</a></li>
+                      <li><a href="layouts-fixed-footer.html">Fixed Footer</a></li> -->
+                      
+                   </ul>
+                   </li>
+                     <!--Menu list item-->
                   <li>
                     <a href="<?= $this -> baseUrl ?>getInTouch" >
                       <i class="fa fa-envelope"></i>
@@ -72,17 +141,6 @@
                     </a>
                   </li>
 
-
-                  <!--Menu list item-->
-                  <li>
-                    <a href="<?= $this -> baseUrl ?>workers/addNew" >
-                      <i class="fa fa-plus"></i>
-                      <span class="menu-title">
-                        <strong>Add New Worker</strong>
-                        <!-- <span class="pull-right badge badge-warning">9</span> -->
-                      </span>
-                    </a>
-                  </li>
             
                   <li class="list-divider"></li>
             

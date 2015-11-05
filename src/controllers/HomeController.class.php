@@ -20,7 +20,7 @@ class HomeController extends BaseController {
 
 		try{
 			if (isset($this-> username)){
-				require_once 'views/admin/admin.php';				
+				require_once 'views/admin/dashboard/admin.php';				
 			}
 			else {
 				require_once 'views/landing/index.php';
@@ -37,7 +37,7 @@ class HomeController extends BaseController {
 	function admin() {
 		try{
 
-			require_once 'views/admin/admin.php';
+			require_once 'views/admin/dashboard/admin.php';
 
 		} catch (Exception $e) {
 

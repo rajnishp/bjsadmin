@@ -6,12 +6,28 @@
         <!--Brand logo & name-->
         <!--================================-->
         <div class="navbar-header">
-          <a href="<?= $this -> baseUrl ?>" class="navbar-brand">
-            <img src="<?= $this-> baseUrl?>static/images/logo.png" style="height: 45px; width: 45px;" class="brand-icon">
-            <div class="brand-title">
-              <span class="brand-text">BlueTeam</span>
-            </div>
-          </a>
+
+          <?php 
+
+            $currentUrl = "http://$_SERVER[HTTP_HOST]/"; 
+            
+            if($currentUrl == $this-> baseUrl) { ?>
+              <a href="<?= $this -> baseUrl ?>" class="navbar-brand">
+                <img src="<?= $this-> baseUrl?>static/images/logo.png" style="height: 45px; width: 45px;" class="brand-icon">
+                <div class="brand-title">
+                  <span class="brand-text">BlueTeam Admin</span>
+                </div>
+              </a>
+          <?php } elseif($currentUrl == $this-> agentBaseUrl) { ?>
+              <a href="<?= $this -> agentBaseUrl ?>" class="navbar-brand">
+                <img src="<?= $this-> baseUrl?>static/images/logo.png" style="height: 45px; width: 45px;" class="brand-icon">
+                <div class="brand-title">
+                  <span class="brand-text">BlueTeam Agent</span>
+                </div>
+              </a>
+          <?php } ?>
+
+          
         </div>
 
         <!--================================-->
@@ -493,9 +509,21 @@
                 */ ?>
                 <!-- Dropdown footer -->
                 <div class="pad-all text-right">
-                  <a href="<?= $this-> baseUrl ?>home/logout" class="btn btn-primary">
-                    <i class="fa fa-sign-out fa-fw"></i> Logout
-                  </a>
+
+                  <?php 
+
+                    $currentUrl = "http://$_SERVER[HTTP_HOST]/"; 
+                    
+                    if($currentUrl == $this-> baseUrl) { ?>
+                    <a href="<?= $this-> baseUrl ?>home/logout" class="btn btn-primary">
+                      <i class="fa fa-sign-out fa-fw"></i> Logout
+                    </a>
+                  <?php } elseif($currentUrl == $this-> agentBaseUrl) { ?>
+                    <a href="<?= $this-> agentBaseUrl ?>home/logout" class="btn btn-primary">
+                      <i class="fa fa-sign-out fa-fw"></i> Logout
+                    </a>
+                  <?php } ?>
+
                 </div>
               </div>
             </li>

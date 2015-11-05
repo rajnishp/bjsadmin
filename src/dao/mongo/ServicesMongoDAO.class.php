@@ -1,17 +1,22 @@
 <?php
 
 	/**
-     * @author rajnish
+     * @author rahul
 	**/
+
+	//require_once 'dao/CustomerIdMappingDAO.interface.php';
+    //require_once 'dao/mysql/CustomerIdMappingMySqlDAO.class.php';
+    //require_once 'models/customer/Customer.class.php';
     
-    require_once 'dao/WorkersDAO.interface.php';
-    require_once 'models/Worker.class.php';
+    require_once 'dao/ServiceRequestsDAO.interface.php';
+    require_once 'models/ServiceRequests.class.php';
 
     require_once 'utils/mongo/MongoDBUtil.class.php';
     require_once 'exceptions/MongoDbException.class.php';
     require_once 'exceptions/DuplicateEntityException.class.php';
+    //require_once 'exceptions/customers/CustomerNotFoundException.class.php';
 
-	class WorkersMongoDAO implements WorkersDAO {
+	class ServicesMongoDAO implements ServicesDAO {
 
         private $mongo;
         
@@ -21,23 +26,30 @@
 
         }
 
-        public function insert($workerObj) {
+        // should be implemented in future
+        public function insert($serviceListObj) {
             global $logger, $warnings_payload;
 
-            $logger -> debug("Insert the worker details into `workers` collection");
+            $logger -> debug("Insert the customer into `services` collection");
+            try {
+            $logger -> debug ("Selecting collection: services");
+            $this -> mongo -> selectCollection('services');
 
-            $logger -> debug ("Selecting collection: workers");
-            $this -> mongo -> selectCollection('workers');
 
-
-            $logger -> debug("Mongo Worker: " . json_encode($workerObj->toArray() ));
-            $result = $this -> mongo -> insert($workerObj->toArray()); 
+            $logger -> debug("Mongo Customer: " . json_encode($serviceListObj->toArray() ));
+            $result = $this -> mongo -> insert($serviceListObj->toArray()); 
             $logger -> debug("Result: " . $result ['ok']);
+            } catch(MongoException $e) {
+                $logger -> error("MongoException: " . $e -> getMessage());
+                throw new MongoDbException($e, $e);
+            } catch(Exception $e) {
+                throw $e;
+            }
 
             return $result;
 
-            //return $return;
         }
+
 
         public function multiInsert($customerObjs, $raw) {
 
@@ -71,48 +83,6 @@
                 'conflicts' => $conflicts, 
                 'duplicates' => $duplicates
             );
-        }
-
-
-        public function loadAllWorkers() {
-            global $logger;
-            //$allWorkers = $mongoCustomersInConflict = null;
-
-            $logger -> debug ("Selecting collection: workers");
-            $this -> mongo -> selectCollection('workers');     
-
-            $mongoWorkers = $this -> mongo -> find(array());
-            foreach ($mongoWorkers as $worker) {
-                $allWorkers [] = new Worker($worker['firstName'], $worker['lastName'],null, null, null, null, null, 
-                                            $worker['mobile'],null, null, null, $worker['skills'], $worker['experience'], null,
-                                            $worker['currentWorkingCity'], $worker['currentWorkingArea'], $worker['preferredWorkingCity'],$worker['preferredWorkingArea'],null, null, null, null, null,
-                                            $worker['gender'], null, null, null);
-            }
-            
-            return $allWorkers;
-        }
-
-        public function loadAgentWorkers($agentId) {
-            // This function will load workers only added by logged-in agent
-            global $logger;
-            //$allWorkers = $mongoCustomersInConflict = null;
-
-            $logger -> debug ("Selecting collection: workers");
-            $this -> mongo -> selectCollection('workers');     
-
-
-            $agentQuery = array('agentId' => $agentId);
-
-            $agentWorkers = $this -> mongo -> find(array($agentQuery));
-
-            foreach ($agentWorkers as $worker) {
-                $agentWorkers [] = new Worker($worker['firstName'], $worker['lastName'],null, null, null, null, null, 
-                                            $worker['mobile'],null, null, null, $worker['skills'], $worker['experience'], null,
-                                            $worker['currentWorkingCity'], $worker['currentWorkingArea'], $worker['preferredWorkingCity'],$worker['preferredWorkingArea'],null, null, null, null, null,
-                                            $worker['gender'], null, null, null);
-            }
-            
-            return $agentWorkers;
         }
 
         public function update($customer, $raw) {
@@ -302,17 +272,21 @@
         
         public function loadAll() {
             global $logger;
-            $customers = $mongoCustomers = null;
+            $services = null;
 
-            $logger -> debug ("Selecting collection: customers");
-            $this -> mongo -> selectCollection('customers');     
+            $logger -> debug ("Selecting collection: services");
+            $this -> mongo -> selectCollection('services');     
 
-            $mongoCustomers = $this -> mongo -> find(array());
-            foreach ($mongoCustomers as $mongoCustomer) {
-                $customers [] = Customer :: deserialize($mongoCustomer);
+            $mongoServices = $this -> mongo -> find(array());
+            
+            foreach ($mongoServices as $key => $value) {
+                //$name, $img, $status, $addedOn, $lastUpdateOn, $uuid = null
+                $logger -> debug ("mongo array : " . json_encode($value["name"]));
+
+                $services[] = new Service($value["name"], $value["img"], $value["status"], null, null, $key );
             }
             
-            return $customers;
+            return $services;
         }
         
         public function loadAllInOrderOf($sortByKey) {

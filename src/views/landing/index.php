@@ -67,10 +67,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mar-btm"><em>- or -</em></div>
-                        <button class="btn btn-primary btn-lg btn-block" type="button">
-                            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-                        </button>
+                        
                     </form>
                 </div>
             </div>

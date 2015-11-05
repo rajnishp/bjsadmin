@@ -15,7 +15,11 @@ abstract class BaseController {
 	protected $serviceRequestDAO;
 	protected $agentDAO;
 	protected $getInTouchDAO;
-
+	protected $serviceDAO;
+	protected $userDAO;
+	protected $freeWorkes;
+	protected $pendingRequests;
+	protected $totalUsers;
 
 	function __construct (  ){
 		
@@ -48,12 +52,15 @@ abstract class BaseController {
 		$this -> serviceRequestDAO = $DAOFactory->getServiceRequestDAO();
 		$this -> agentDAO = $DAOFactory->getAgentDAO();
 		$this -> getInTouchDAO = $DAOFactory->getInTouchDAO();
+		$this -> userDAO = $DAOFactory->getUsersDAO();
+		$this -> serviceDAO = $DAOFactory->getServicesDAO();
+
 
 		
 		$this->process();
 
 	}
-
+// define freeWorkes,pendingRequests,totalUsers
 	function process (){
 
 	}

@@ -38,6 +38,8 @@
 		
 		private $birthDate;
 		private $gender;
+
+		private $agentId;
 		private $addedOn;
 		private $lastUpdateOn;
 
@@ -46,7 +48,7 @@
 							$emergencyMobile, $education, $languages, $skills, 
 							$experience, $workingDomain, $currentWorkingCity, $currentWorkingArea, $preferredWorkingCity, $preferredWorkingArea, 
 							$guessedSalary, $verificationStatus, $workTimeSlots, $freeTimeSlots, 
-							$birthDate, $gender, $addedOn, $lastUpdateOn, $uuid = null) {
+							$birthDate, $gender, $agentId, $addedOn, $lastUpdateOn, $uuid = null) {
 			
 			$this -> uuid = $uuid;
 			$this -> firstName = $firstName;
@@ -75,6 +77,8 @@
 			$this -> freeTimeSlots = $freeTimeSlots;
 			$this -> birthDate = $birthDate;
 			$this -> gender = $gender;
+
+			$this -> agentId = $agentId;
 			$this -> addedOn = $addedOn;
 			$this -> lastUpdateOn = $lastUpdateOn;
 
@@ -255,6 +259,13 @@
 			return $this-> gender;
 		}
 
+		function setAgentId($agentId){
+			$this -> agentId  = $agentId;
+		}
+		function getAgentId(){
+			return $this-> agentId;
+		}
+
 
 		function setAddedOn($addedOn){
 			$this -> addedOn = $addedOn;
@@ -296,6 +307,7 @@
 							freeTimeSlots => $this -> freeTimeSlots,
 							birthDate => $this -> birthDate,
 							gender => $this -> gender,
+							agentId => $this -> agentId,
 							addedOn => $this -> addedOn,
 							lastUpdateOn => $this -> lastUpdateOn
 						);

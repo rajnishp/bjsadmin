@@ -75,5 +75,34 @@ class DAOFactory{
 		return new GetInTouchMongoDAO();
 	}
 
+	//getServicesDAO
+	/**
+	* @return ServicesMongoDAO
+	*/
+
+	public static function getServicesDAO(){
+		
+		require_once('ServicesDAO.interface.php');
+		require_once('models/Service.class.php');
+		require_once('mongo/ServicesMongoDAO.class.php');
+
+		return new ServicesMongoDAO();
+	}
+
+	//getUsersDAO
+	/**
+	* @return UsersMongoDAO
+	*/
+
+	public static function getUsersDAO(){
+		
+		require_once('UsersDAO.interface.php');
+		require_once('models/User.class.php');
+		require_once('mongo/UsersMongoDAO.class.php');
+
+		return new UsersMongoDAO();
+	}
+
+
 }
 ?>

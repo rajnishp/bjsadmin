@@ -22,7 +22,30 @@ class WorkerController extends BaseController {
 				//var_dump($allWorkers);
 				//die();
 
-				require_once 'views/workers/workers.php';
+				require_once 'views/admin/workers/workers.php';
+			}
+			else {
+				require_once 'views/landing/index.php';
+			}
+
+		} catch (Exception $e) {
+
+			//require_once 'views/error/pages-404.php';	
+			$this->logger->error( "Error occur :500 ".json_encode($e) );
+		}
+
+	}
+
+	function renderAgent (){
+		$baseUrl = $this->baseUrl;
+
+		try{
+			if (isset($this-> username)){
+				$agentWorkers = $this -> workerDAO -> loadAgentWorkers();
+				//var_dump($allWorkers);
+				//die();
+
+				require_once 'views/agent/workers/workers.php';
 			}
 			else {
 				require_once 'views/landing/index.php';
@@ -41,7 +64,7 @@ class WorkerController extends BaseController {
 
 		try{
 			if (isset($this-> username)){
-				require_once 'views/workers/addNewWorker.php';				
+				require_once 'views/admin/workers/addNewWorker.php';				
 			}
 			else {
 				require_once 'views/landing/index.php';
@@ -56,8 +79,25 @@ class WorkerController extends BaseController {
 	}
 	
 	function addNewWorker (){
+		
 		if (isset($_POST)) {
-
+			
+			//agentId added with worker details only for worker added by logged in agent
+            //$currentUrl = "http://$_SERVER[HTTP_HOST]/";
+            
+            /*if($currentUrl == $this-> baseUrl) {
+            	echo "inside if";
+            	$agentId = null;
+            } 
+            elseif($currentUrl == $this-> agentBaseUrl) { 
+            	echo "inside else if";
+            */	$agentId = $this -> uuid;
+            /*}
+            else { echo "inside else";
+            $agentId = "inside else"; }*/
+            
+            //agentId assigne ends
+var_dump($agentId); 
 			$newWorkerObj = new Worker (
 										$_POST['first_name'],
 										$_POST['last_name'],
@@ -88,6 +128,7 @@ class WorkerController extends BaseController {
 										$_POST['free_slots'],
 										$_POST['birth_date'],
 										$_POST['gender'],
+										$agentId,
 										date("Y-m-d H:i:s"),
 										null
 									);

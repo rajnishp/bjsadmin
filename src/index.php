@@ -14,6 +14,8 @@ include_once "controllers/AgentHomeController.class.php";
 include_once "controllers/WorkerController.class.php";
 include_once "controllers/ServiceRequestsController.class.php";
 include_once "controllers/GetInTouchController.class.php";
+include_once "controllers/UserController.class.php";
+include_once "controllers/ServiceController.class.php";
 
 
 require_once 'utils/Util.php';
@@ -151,9 +153,57 @@ $logger -> debug ("get :: " .json_encode($_GET));
 					case 'updateRequestStatus':
 						$serviceRequestsController -> updateRequestStatus();
 						break;
+
+					case 'deleteRequest':
+						$serviceRequestsController -> deleteRequest();
+						break;
 					
 					default:
 						$serviceRequestsController -> render ();
+						break;
+				}
+
+				break;
+
+			case "services":
+				$serviceController = new ServiceController();
+
+				$where = $route[2];
+
+				switch ($where) {
+
+					case 'addNew':
+						$serviceController -> addNew();
+						break;
+
+					case 'updateRequestStatus':
+						$serviceController -> updateService();
+						break;
+					
+					default:
+						$serviceController -> render ();
+						break;
+				}
+
+				break;
+
+			case "users":
+				$userController = new UserController();
+
+				$where = $route[2];
+
+				switch ($where) {
+
+					case 'addNew':
+						$userController -> addNew();
+						break;
+
+					case 'updateRequestStatus':
+						$userController -> updateUser();
+						break;
+					
+					default:
+						$userController -> render ();
 						break;
 				}
 

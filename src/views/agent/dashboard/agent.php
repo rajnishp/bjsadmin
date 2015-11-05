@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>BlueTeam | Admin Control</title>
+	<title>BlueTeam | Agent Dashboard</title>
 
 	<?php require_once 'views/header/header.php'; ?>
 
@@ -22,7 +22,7 @@
 			<div id="content-container">
 
 				<div id="page-title">
-					<h1 class="page-header text-overflow">BlueTeam Admin Control</h1>
+					<h1 class="page-header text-overflow">BlueTeam Agent Dashboard</h1>
 
 				</div>
 
@@ -31,7 +31,7 @@
 					<div class="col-sm-6 col-md-4 col-lg-3 col-lg-offset-1">
 
 						<!--Sales tile-->
-						<a href="<?= $this -> baseUrl ?>workers/workers" >
+						<a href="<?= $this -> agentBaseUrl ?>workers" >
 							<div class="panel panel-primary panel-colorful">
 								<div class="pad-all text-center">
 									<span class="text-5x text-thin"></span>
@@ -46,7 +46,7 @@
 					<div class="col-sm-6 col-md-4 col-lg-3">
 
 						<!--Sales tile-->
-						<a href="<?= $this -> baseUrl ?>requests" >
+						<a href="<?= $this -> agentBaseUrl ?>requests" >
 							<div class="panel panel-primary panel-colorful">
 								<div class="pad-all text-center">
 									<span class="text-5x text-thin"></span>
@@ -61,7 +61,7 @@
 					<div class="col-sm-6 col-md-4 col-lg-3">
 
 						<!--List all get in touch messages/queries-->
-						<a href="<?= $this -> baseUrl ?>getInTouch" >
+						<a href="<?= $this -> agentBaseUrl ?>getInTouch" >
 							<div class="panel panel-primary panel-colorful">
 								<div class="pad-all text-center">
 									<span class="text-5x text-thin"></span>
@@ -76,7 +76,7 @@
 					<div class="col-sm-6 col-md-4 col-lg-3 col-lg-offset-1">
 
 						<!--Messages tile-->
-						<a href="<?= $this -> baseUrl ?>workers/addNew" >
+						<a href="<?= $this -> agentBaseUrl ?>workers/addNew" >
 							<div class="panel panel-warning panel-colorful">
 								<div class="pad-all text-center">
 									<span class="text-5x text-thin"></span>
@@ -90,7 +90,7 @@
 					<div class="col-sm-6 col-md-4 col-lg-3">
 
 						<!--Projects-->
-						<a href="<?= $this -> baseUrl ?>home/logout" >
+						<a href="<?= $this -> agentBaseUrl ?>home/logout" >
 							<div class="panel panel-purple panel-colorful">
 								<div class="pad-all text-center">
 									<span class="text-5x text-thin"></span>

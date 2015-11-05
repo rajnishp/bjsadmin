@@ -89,7 +89,7 @@ $logger -> debug ("get :: " .json_encode($_GET));
 						break;
 					//addNewWorker is post worker detail for new worker
 					default:
-						$workerController -> render ();
+						$workerController -> renderAgent ();
 						break;
 				}
 

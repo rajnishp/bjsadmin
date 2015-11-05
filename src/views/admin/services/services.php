@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>BlueTeam Admin | List all Service Requests</title>
+	<title>BlueTeam Admin | List all Services</title>
 
 	<?php require_once 'views/header/header.php'; ?>
 
@@ -25,45 +25,27 @@
 				<!--===================================================-->
 				<div class="panel">
 					<div class="panel-heading">
-						<h3 class="panel-title">List of all Service Requests</h3>
+						<h3 class="panel-title">List of all Services</h3>
 					</div>
 				
 					<div id="demo-custom-toolbar2" class="table-toolbar-left">
-						<a href="<?= $this-> baseUrl ?>workers/addNew" class="btn btn-primary btn-labeled fa fa-plus">Add New Worker</a>
+						<a href="<?= $this-> baseUrl ?>services/addNew" class="btn btn-primary btn-labeled fa fa-plus">Add New Service</a>
 					</div>
 				
 					<div class="panel-body">
 						<table id="demo-dt-addrow" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Contact No</th>
-									<th>Address</th>
-									<th class="min-tablet">Service Type</th>
-									<th class="min-tablet">Deliver Status</th>
-									<th class="min-desktop">Request Time</th>
+									<th>Service Name</th>
+									<th>Service Plan</th>
+									
 								</tr>
 							</thead>
 							<tbody>
 								<?php foreach ($allRequests as $serviceRequest) { ?>
 									<tr>
 										<td><?= $serviceRequest-> getName() ?></td>
-										<td><?= $serviceRequest-> getMobile() ?> </td>
-										<td><?= $serviceRequest-> getAddress() ?> </td>
-										<td><?= $serviceRequest-> getType() ?> </td>
-										<td><?= $serviceRequest-> getStatus() ?>
-											<form  onsubmit="return (validateRequestStatus('<?= $serviceRequest-> getUuid() ?>'));">
-												<select class="selectpicker" id="request_status">
-
-													<option class="btn-info" value="Request">Request</option>
-													<option class="btn-warning" value="In-progress" >In-progress</option>
-													<option class="btn-success" value="Delivered" >Delivered</option>
-
-												</select>
-												<button type="submit" class="btn btn-primary"> Update </button>
-											</form>
-										</td>
-										<td><?= $serviceRequest-> getAddedOn() ?></td>					
+										<td><?= $serviceRequest-> getPlans() ?> </td>				
 									</tr>
 								<?php } ?>
 							</tbody>
