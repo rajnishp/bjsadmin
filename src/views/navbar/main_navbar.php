@@ -46,7 +46,7 @@
                       <span class="menu-title">
                         
                         <strong>Workers</strong>
-                        <span class="pull-right badge badge-warning"><?= $this -> freeWorkes ?></span>
+                        <span class="pull-right badge badge-DANGER"><?= $this -> freeWorkes ?></span>
 
                       </span>
                       <i class="arrow"></i>
@@ -77,7 +77,7 @@
                       <span class="menu-title">
                         
                         <strong>Requests</strong>
-                        <span class="pull-right badge badge-warning"><?= $this -> pendingRequests ?></span>
+                        <span class="pull-right badge badge-DANGER"><?= $this -> pendingRequests ?></span>
 
                       </span>
                       <i class="arrow"></i>
@@ -86,7 +86,7 @@
             
                     <!--Submenu-->
                     <ul class="collapse">
-                      <li><a href="<?= $this -> baseUrl ?>requests"><i class="fa fa-shopping-cart"></i>List</a></li>
+                      <li><a href="<?= $this -> baseUrl ?>requests/list"><i class="fa fa-shopping-cart"></i>List</a></li>
                       <li><a href="<?= $this -> baseUrl ?>requests/addNew"><i class="fa fa-plus"></i>Add</a></li>
                       <!-- <li><a href="layouts-offcanvas-slide-in-navigation.html">Slide-in Navigation</a></li>
                       <li><a href="layouts-offcanvas-revealing-navigation.html">Revealing Navigation</a></li>
@@ -108,7 +108,7 @@
                       <span class="menu-title">
                         
                         <strong>Users</strong>
-                        <span class="pull-right badge badge-warning"><?= $this -> totalUsers ?></span>
+                        <span class="pull-right badge badge-SUCCESS"><?= $this -> totalUsers ?></span>
                       </span>
                       <i class="arrow"></i>
                       <!-- <i class="arrow"></i> -->

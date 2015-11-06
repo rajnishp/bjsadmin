@@ -47,6 +47,12 @@
 
         }
 
+        public function countTotalUser(){
+            $this -> mongo -> selectCollection('Users');
+             return count($this -> mongo -> find(array()));
+
+        }
+
 
         public function multiInsert($customerObjs, $raw) {
 

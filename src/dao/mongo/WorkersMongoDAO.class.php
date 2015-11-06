@@ -39,6 +39,19 @@
             //return $return;
         }
 
+        public function countFreeWorkers(){
+
+                try {
+                    $this -> mongo -> selectCollection('workers');
+                    return count($this -> mongo -> find(array('status' => 1)));
+
+
+                } catch(Exception $e) {
+                    throw $e;
+                }
+
+        }
+
         public function multiInsert($customerObjs, $raw) {
 
             $inserts = $conflicts = $duplicates = array();

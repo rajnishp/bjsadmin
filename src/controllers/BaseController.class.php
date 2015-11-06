@@ -63,6 +63,10 @@ abstract class BaseController {
 // define freeWorkes,pendingRequests,totalUsers
 	function process (){
 
+		$this->freeWorkes = $this -> workerDAO-> countFreeWorkers();
+		$this->pendingRequests = $this -> serviceRequestDAO -> countPendingRequests();
+		$this->totalUsers = $this -> userDAO -> countTotalUser() ;
+
 	}
 
 }

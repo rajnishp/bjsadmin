@@ -34,6 +34,25 @@ class ServiceRequestsController extends BaseController {
 
 	}
 
+	function addNew () {
+		$baseUrl = $this-> baseUrl;
+
+		try{
+			if (isset($this-> username)){
+				require_once 'views/admin/serviceRequest/addNewRequest.php';				
+			}
+			else {
+				require_once 'views/landing/index.php';
+			}
+
+		} catch (Exception $e) {
+
+			//require_once 'views/error/pages-404.php';	
+			$this->logger->error( "Error occur :500 ".json_encode($e) );
+		}
+
+	}
+
 	function updateRequestStatus() {
 
 		if (isset($_POST['request_status']) && isset($_POST['uuid']) && $_POST['request_status'] != '' && $_POST['uuid'] != null) {

@@ -14,7 +14,9 @@
 	class ServiceRequestsMongoDAO implements ServiceRequestsDAO {
 
         private $mongo;
-        
+        // 0 = incomming request
+        // 1 = inporgress
+        // 2 = done
         public function __construct () {
             $this -> mongo = new MongoDBUtil(array('db_name' => 'blueteam'));
             $this -> mongo -> init();
@@ -39,6 +41,12 @@
             //return $return;
         }
 
+        public function countPendingRequests(){
+            $this -> mongo -> selectCollection('service_requests');
+             return count($this -> mongo -> find(array('status' => 0)));
+
+        }
+
 		public function loadAllServiceRequests() {
             global $logger;
 
@@ -49,10 +57,10 @@
             foreach ($mongoServiceRequests as $serviceRequest) {
                 $allServiceRequests [] = new ServiceRequests($serviceRequest['name'], $serviceRequest['mobile'], $serviceRequest['address'],$serviceRequest['type'], $serviceRequest['status'], $serviceRequest['addedOn'], $serviceRequest['lastUpdateOn'], $serviceRequest['_id']);
             }
-            foreach ($allServiceRequests as $requestall) {
+            /*foreach ($allServiceRequests as $requestall) {
                 var_dump($requestall);
                 echo "<br/>-------------------------------------------------------------------<br/>";
-            }
+            }*/
             return $allServiceRequests;
         }
 
@@ -173,7 +181,7 @@
             //$result = $this -> mongo -> removeByObjectId($uuid);
             try {
                 $criteria = array( '_id' => new MongoId($uuid));
-                $update = array($set => array('status' => "Deleted"));
+                $update = array('$set' => array('status' => 3));
 
                 $result = $this -> mongo -> update($criteria, $update, array("upsert"=>true));
                 
