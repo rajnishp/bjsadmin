@@ -38,15 +38,17 @@
 								<tr>
 									<th>Name</th>
 									<th>Contact No</th>
-									<th>Address</th>
+									<th>Email</th>
+									<th>GPS Location</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php foreach ($allUsers as $user) { ?>
 									<tr>
-										<td><?= $user-> getName() ?></td>
-										<td><?= $user-> getMobile() ?> </td>
-										<td> --- </td>
+										<td><?= $user["name"] ?></td>
+										<td><?= $user["mobile"] ?> </td>
+										<td> <?= $user["email"] ?> </td>
+										<td> <?= $user["gpsLocation"] ?> </td>
 											
 									</tr>
 								<?php } ?>

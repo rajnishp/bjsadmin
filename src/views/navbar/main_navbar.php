@@ -1,4 +1,4 @@
-<!--MAIN NAVIGATION-->
+MAIN NAVIGATION-->
       <!--===================================================-->
       <nav id="mainnav-container">
         <div id="mainnav">
@@ -116,8 +116,8 @@
             
                     <!--Submenu-->
                     <ul class="collapse">
-                      <li><a href="layouts-collapsed-navigation.html">List</a></li>
-                      <li><a href="layouts-offcanvas-navigation.html">Add</a></li>
+                      <li><a href="<?= $this -> baseUrl ?>users/list">List</a></li>
+                      <li><a href="<?= $this -> baseUrl ?>users/addNew">Add</a></li>
                       <!-- <li><a href="layouts-offcanvas-slide-in-navigation.html">Slide-in Navigation</a></li>
                       <li><a href="layouts-offcanvas-revealing-navigation.html">Revealing Navigation</a></li>
                       <li class="list-divider"></li>
@@ -159,7 +159,7 @@
                   </div>
 
                   <!-- Hide the content on collapsed navigation -->
-                  <div id="demo-wg-server" class="hide-small mainnav-widget-content">
+                  <!-- <div id="demo-wg-server" class="hide-small mainnav-widget-content">
                     <ul class="list-group">
                       <li class="list-header pad-no pad-ver">Server Status</li>
                       <li class="mar-btm">
@@ -182,7 +182,7 @@
                       </li>
                       <li class="pad-ver"><a href="#" class="btn btn-success btn-bock">View Details</a></li>
                     </ul>
-                  </div>
+                  </div> -->
                 </div>
                 <!--================================-->
                 <!--End widget-->
@@ -196,4 +196,4 @@
         </div>
       </nav>
       <!--===================================================-->
-      <!--END MAIN NAVIGATION-->
+      <!--END MAIN NAVIGATION

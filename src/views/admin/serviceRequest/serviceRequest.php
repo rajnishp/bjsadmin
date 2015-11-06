@@ -29,7 +29,7 @@
 					</div>
 				
 					<div id="demo-custom-toolbar2" class="table-toolbar-left">
-						<a href="<?= $this-> baseUrl ?>workers/addNew" class="btn btn-primary btn-labeled fa fa-plus">Add New Worker</a>
+						<a href="<?= $this-> baseUrl ?>requests/addNew" class="btn btn-primary btn-labeled fa fa-plus">Add New Request</a>
 					</div>
 				
 					<div class="panel-body">
