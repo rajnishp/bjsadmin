@@ -42,6 +42,7 @@
 									<th class="min-tablet">Service Type</th>
 									<th class="min-tablet">Deliver Status</th>
 									<th class="min-desktop">Request Time</th>
+									<th > </th>
 								</tr>
 							</thead>
 							<tbody>
@@ -75,6 +76,8 @@
 						</table>
 					</div>
 				</div>
+
+
 				<!--===================================================-->
 				<!-- End Add Row -->
 				
