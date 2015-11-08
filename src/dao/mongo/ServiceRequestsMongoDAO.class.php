@@ -55,7 +55,7 @@
 
             $mongoServiceRequests = $this -> mongo -> find(array());
             foreach ($mongoServiceRequests as $serviceRequest) {
-                $allServiceRequests [] = new ServiceRequests($serviceRequest['name'], $serviceRequest['mobile'], $serviceRequest['address'],$serviceRequest['type'], $serviceRequest['status'], $serviceRequest['addedOn'], $serviceRequest['lastUpdateOn'], $serviceRequest['_id']);
+                $allServiceRequests [] = new ServiceRequests($serviceRequest['name'], $serviceRequest['mobile'], $serviceRequest['address'],$serviceRequest['type'], $serviceRequest['requirements'], $serviceRequest['workingHour'], $serviceRequest['status'], $serviceRequest['addedOn'], $serviceRequest['lastUpdateOn'], $serviceRequest['_id']);
             }
             /*foreach ($allServiceRequests as $requestall) {
                 var_dump($requestall);

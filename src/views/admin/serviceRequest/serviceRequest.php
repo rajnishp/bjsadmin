@@ -40,6 +40,8 @@
 									<th>Contact No</th>
 									<th>Address</th>
 									<th class="min-tablet">Service Type</th>
+									<th> Requirments </th>
+									<th> Working Time </th>
 									<th class="min-tablet">Deliver Status</th>
 									<th class="min-desktop">Request Time</th>
 									<th > </th>
@@ -52,6 +54,10 @@
 										<td><?= $serviceRequest-> getMobile() ?> </td>
 										<td><?= $serviceRequest-> getAddress() ?> </td>
 										<td><?= $serviceRequest-> getType() ?> </td>
+										
+										<td><?= $serviceRequest-> getRequirements() ?> </td>
+										<td><?= $serviceRequest-> getWorkingHour() ?> </td>
+
 										<td><?= $serviceRequest-> getStatus() ?>
 											<form  onsubmit="return (validateRequestStatus('<?= $serviceRequest-> getUuid() ?>'));">
 												<select class="selectpicker" id="request_status">
