@@ -217,6 +217,42 @@
 
 					</div>
 
+					<div class="form-group">
+						<label class="col-md-3 control-label">Timings</label>
+						<div class="col-md-3">
+							<input type="text" id="timings" class="form-control" placeholder="Timings">
+							<small class="help"></small>
+						</div>
+
+						<label for="demo-msk-date" class="col-md-1 control-label">Home Town/state</label>
+						<div class="col-md-3">
+							<input type="text" id="home_town" class="form-control" placeholder="hometown/state">
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3 control-label">Remarks</label>
+						<div class="col-md-3">
+							<textarea type="text" id="remarks" class="form-control" placeholder="Remarks" rows="4"></textarea>
+						</div>
+
+							<label class="col-lg-1 control-label">Police Verification</label>
+							<div class="col-lg-3">
+								<div class="radio">
+									<label class="form-radio form-icon">
+										<input type="radio" name="police" value="yes"> yes
+									</label>
+
+									<label class="form-radio form-icon">
+										<input type="radio" name="police" value="no"> no
+									</label>
+								</div>
+							</div>
+
+							
+						
+					</div>
 					<!-- <div class="form-group">
 						<label class="col-md-3 control-label">Working Time Slots</label>
 

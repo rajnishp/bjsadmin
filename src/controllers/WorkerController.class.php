@@ -97,6 +97,7 @@ class WorkerController extends BaseController {
             $agentId = "inside else"; }*/
             
             //agentId assigne ends
+            ////timings, home_town, remarks, police
 var_dump($agentId); 
 			$newWorkerObj = new Worker (
 										$_POST['first_name'],
@@ -128,6 +129,10 @@ var_dump($agentId);
 										$_POST['free_slots'],
 										$_POST['birth_date'],
 										$_POST['gender'],
+										$_POST['timings'],
+										$_POST['home_town'],
+										$_POST['remarks'],
+										$_POST['police'],
 										$agentId,
 										date("Y-m-d H:i:s"),
 										null

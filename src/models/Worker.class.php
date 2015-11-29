@@ -43,12 +43,18 @@
 		private $addedOn;
 		private $lastUpdateOn;
 
+		////timings, home_town, remarks, police
+		private $timings;
+		private $home_town;
+		private $remarks;
+		private $police;
+
 		function __construct ($firstName, $lastName, $addressProofName, $addressProofId, 
 							$idProofName, $idProofId, $address, $mobile, 
 							$emergencyMobile, $education, $languages, $skills, 
 							$experience, $workingDomain, $currentWorkingCity, $currentWorkingArea, $preferredWorkingCity, $preferredWorkingArea, 
 							$guessedSalary, $verificationStatus, $workTimeSlots, $freeTimeSlots, 
-							$birthDate, $gender, $agentId, $addedOn, $lastUpdateOn, $uuid = null) {
+							$birthDate, $gender, $timings, $home_town, $remarks, $police, $agentId, $addedOn, $lastUpdateOn, $uuid = null) {
 			
 			$this -> uuid = $uuid;
 			$this -> firstName = $firstName;
@@ -77,6 +83,11 @@
 			$this -> freeTimeSlots = $freeTimeSlots;
 			$this -> birthDate = $birthDate;
 			$this -> gender = $gender;
+
+			$this -> timings = $timings;
+			$this -> home_town = $home_town;
+			$this -> remarks = $remarks;
+			$this -> police = $police;
 
 			$this -> agentId = $agentId;
 			$this -> addedOn = $addedOn;
@@ -281,6 +292,7 @@
 			return $this-> lastUpdateOn;
 		}
 
+		//timings, home_town, remarks, police
 		function toArray() {
 			return array (
 							firstName => $this -> firstName,
@@ -307,6 +319,10 @@
 							freeTimeSlots => $this -> freeTimeSlots,
 							birthDate => $this -> birthDate,
 							gender => $this -> gender,
+							timings => $this -> timings,
+							home_town => $this -> home_town,
+							police => $this -> police,
+							remarks => $this -> remarks,
 							agentId => $this -> agentId,
 							addedOn => $this -> addedOn,
 							lastUpdateOn => $this -> lastUpdateOn

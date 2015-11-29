@@ -117,7 +117,7 @@
         var dataString = "";
         var working_slots = "";
         var free_slots = "";
-
+        //timings, home_town, remarks, police
         dataString = "first_name=" + $('#'+fields[0]).val() + "&last_name=" + $('#'+fields[1]).val() +
             "&address_proof_name=" + $('#'+fields[2]).val() + "&address_proof_id=" + $('#'+fields[3]).val() + 
             "&id_proof_name=" + $('#'+fields[4]).val() + "&id_proof_id=" +  $('#'+fields[5]).val() + 
@@ -131,8 +131,12 @@
             "&free_slots=" + $('#'+fields[18]).val() +
             "&languages=" + languagesArray + 
             "&skills=" + skillsArray +
-            "&emergancy_mobile=" + $('#emergancy_mobile').val() ;
-        
+            "&emergancy_mobile=" + $('#emergancy_mobile').val()+
+            "&timings=" + $('#timings').val() +
+            "&home_town=" + $('#home_town').val() +
+            "&remarks=" + $('#remarks').val() +
+            "&police=" + $("input[name='police']:checked").val() ;
+        //alert(dataString);
         console.log(dataString);
           $.ajax({
           type: "POST",
