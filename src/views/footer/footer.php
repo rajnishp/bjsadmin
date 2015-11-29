@@ -140,7 +140,7 @@
           data: dataString,
           cache: false,
           success: function(result){
-            alert(result);
+            //alert(result);
             console.log(result);
             $(fields).each(function(i, idVal){ 
               $("#"+idVal).val(""); 
@@ -149,6 +149,7 @@
             $('#skills').val("");
             $('#emergancy_mobile').val(""); 
             alert("Added Successfully");
+            location.reload();
           },
           error: function(result){
             alert(result);
