@@ -121,7 +121,7 @@ $logger -> debug ("get :: " .json_encode($_GET));
 				$workerController = new WorkerController();
 
 				$where = $route[2];
-
+				//var_dump($route);die();
 				switch ($where) {
 
 					case 'addNew':
@@ -132,6 +132,16 @@ $logger -> debug ("get :: " .json_encode($_GET));
 						$workerController -> addNewWorker();
 						break;
 					//addNewWorker is post worker detail for new worker
+
+					case 'list':
+						$workerController -> render();
+						break;
+
+					case 'get':
+						$workerController -> getWorker($route[3]);
+						break;
+
+
 					default:
 						$workerController -> render ();
 						break;

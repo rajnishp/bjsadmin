@@ -36,6 +36,31 @@ class WorkerController extends BaseController {
 
 	}
 
+
+	function getWorker ($id){
+		$baseUrl = $this->baseUrl;
+
+		try{
+			if (isset($this-> username)){
+				$worker = $this -> workerDAO -> load($id);
+				//var_dump($allWorkers);
+				//die();
+
+				require_once 'views/admin/workers/worker.php';
+			}
+			else {
+				require_once 'views/landing/index.php';
+			}
+
+		} catch (Exception $e) {
+
+			//require_once 'views/error/pages-404.php';	
+			$this->logger->error( "Error occur :500 ".json_encode($e) );
+		}
+
+	}
+
+
 	function renderAgent (){
 		$baseUrl = $this->baseUrl;
 

@@ -280,6 +280,8 @@
 					    </div>
 				    </div> <!-- /.form-group -->
 
+				    </form>
+
 				</div>
 			
 

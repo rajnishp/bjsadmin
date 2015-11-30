@@ -95,11 +95,14 @@
             $this -> mongo -> selectCollection('workers');     
 
             $mongoWorkers = $this -> mongo -> find(array());
+            //$timings, $home_town, $remarks, $police, $agentId, $addedOn, $lastUpdateOn, $uuid = null
             foreach ($mongoWorkers as $worker) {
+
                 $allWorkers [] = new Worker($worker['firstName'], $worker['lastName'],null, null, null, null, null, 
                                             $worker['mobile'],null, null, null, $worker['skills'], $worker['experience'], null,
                                             $worker['currentWorkingCity'], $worker['currentWorkingArea'], $worker['preferredWorkingCity'],$worker['preferredWorkingArea'],null, null, null, null, null,
-                                            $worker['gender'], null, null, null);
+                                            $worker['gender'], $worker['timings'], $worker['home_town'], $worker['remarks'], $worker['police'], $worker['agentId'], 
+                                            $worker['addedOn'], $worker['lastUpdateOn'], $worker['_id']->{'$id'});
             }
             
             return $allWorkers;
@@ -223,36 +226,41 @@
         }
 
 
-        public function load($uuidValues, $orgId = null, $projection = null) {
+        public function load($uuidValues) {
             global $logger;
             $customerObjs = $output = array();
 
-            $logger -> debug ("Selecting collection: customers");
-            $this -> mongo -> selectCollection('customers');     
+            $logger -> debug ("Selecting collection: workers");
+            $this -> mongo -> selectCollection('workers');     
 
-            if (sizeof($uuidValues) == 1) {
-                $customer = $this -> mongo -> findByObjectIdAndOrgId($uuidValues [0], $orgId, $projection);
+            /*if (sizeof($uuidValues) == 1) {*/
+                $worker = $this -> mongo -> findByObjectId($uuidValues );
+
                 
-                if (empty($customer)) 
-                    $output ['failures'] ['uuid'] [] = $uuidValues [0];
+                //if (empty($worker)) 
+                  //  $output ['failures'] ['uuid'] [] = $uuidValues [0];
 
-                $output ['result'] [$uuidValues [0]] = $customer;
-            } else {
+                //$output ['result'] [$uuidValues [0]] = $customer;
+           /* } else {
                 $output = $this -> mongo -> findManyByObjectIdAndOrgId($uuidValues, $orgId, $projection);
 
                 $failures = $output ['failures'];
                 unset($output ['failures']);
                 if (! empty($failures))
                     $output ['failures'] ['uuid'] = $failures;
-            }
+            }*/
 
-            $customers = $output ['result'];
+           /* $customers = $output ['result'];
             unset($output ['result']);
             foreach ($customers as $uuid => $customer) {
                 $output ['result'] [] = Customer :: deserialize($customer);
-            }
-
-            return $output;
+            }*/
+           
+            return new Worker($worker['firstName'], $worker['lastName'],null, null, null, null, null, 
+                                            $worker['mobile'],null, null, null, $worker['skills'], $worker['experience'], null,
+                                            $worker['currentWorkingCity'], $worker['currentWorkingArea'], $worker['preferredWorkingCity'],$worker['preferredWorkingArea'],null, null, null, null, null,
+                                            $worker['gender'], $worker['timings'], $worker['home_town'], $worker['remarks'], $worker['police'], $worker['agentId'], 
+                                            $worker['addedOn'], $worker['lastUpdateOn'], $worker['_id']->{'$id'});
         }
 
         public function loadByExternalIdentifier($idType, $idValues, $orgId = null, $projection = null) {

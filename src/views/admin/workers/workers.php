@@ -48,7 +48,7 @@
 								<tbody>
 									<?php foreach ($allWorkers as $worker) { ?>
 										<tr>
-											<td><?= $worker -> getFirstName() ?>  <?= $worker -> getLastName() ?></td>
+											<td><a href="<?= $this-> baseUrl ?>/workers/get/<?= $worker -> getUuid() ?>" ><?= $worker -> getFirstName() ?>  <?= $worker -> getLastName() ?></a></td>
 											<td><?= $worker-> getMobile() ?> </td>
 											<td><?= $worker-> getSkills() ?> </td>
 											<td><?= $worker-> getExperience() ?> </td>

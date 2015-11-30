@@ -292,6 +292,35 @@
 			return $this-> lastUpdateOn;
 		}
 
+		function setTimings($timings){
+			$this -> timings = $timings;
+		}
+		function getTimings(){
+			return $this-> timings;
+		}
+
+		function setHomeTown($home_town){
+			$this -> home_town = $home_town;
+		}
+		function getHomeTown(){
+			return $this-> home_town;
+		}
+
+		function setRemarks($remarks){
+			$this -> remarks = $remarks;
+		}
+		function getRemarks(){
+			return $this-> home_town;
+		}
+
+		function setPolice($police){
+			$this -> police = $police;
+		}
+		function getPolice(){
+			return $this-> police;
+		}
+
+
 		//timings, home_town, remarks, police
 		function toArray() {
 			return array (
